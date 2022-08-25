@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayersMovement : MonoBehaviour
 {
     private float horizontal;
+    private bool isFacingRight;
+
     public float jumpingPower = 16f;
     public float speed;
     public int jumpCount = 0;
@@ -21,21 +23,27 @@ public class PlayersMovement : MonoBehaviour
 
         animator.SetFloat("Speed", Mathf.Abs(horizontal));
 
+        Flip();
 
-        if (Input.GetButtonDown("Jump") && IsGrounded() || Input.GetButtonDown("Jump") && !IsGrounded() && jumpCount < 1)
+        if (Input.GetButtonDown("Jump") && IsGrounded() || Input.GetButtonDown("Jump") && !IsGrounded() && jumpCount <= 1)
         {
-            Jump();
-            return;
+            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+        }
+        
+        if(Input.GetButtonUp("Jump"))
+        {
+            jumpCount++;
         }
 
-        if (IsGrounded())
+        if(!IsGrounded())
         {
+            animator.SetBool("isJumping", true);
+        }
+        else
+        {
+            animator.SetBool("isJumping", false);
             jumpCount = 0;
         }
-
-
-
-
     }
 
     private void FixedUpdate()
@@ -56,11 +64,15 @@ public class PlayersMovement : MonoBehaviour
         //OverlapCircle basically creates a circle that checks if it is colliding with anything, in the codeline we especify to filter to check objects on the ground layer
         return Physics2D.OverlapCircle(groundcheck.position, 0.2f, groundLayer);
     }
-
-    private void Jump()
+    private void Flip()
     {
-        jumpCount++;
-        rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+        if(isFacingRight && horizontal > 0f || !isFacingRight && horizontal < 0f)
+        {
+            isFacingRight = !isFacingRight;
+            Vector3 localscale = transform.localScale;
+            localscale.x *= -1;
+            transform.localScale = localscale;
+        }
     }
 
 }
