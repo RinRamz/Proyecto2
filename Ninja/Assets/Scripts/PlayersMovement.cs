@@ -6,72 +6,73 @@ public class PlayersMovement : MonoBehaviour
 {
     private float horizontal;
     private bool isFacingRight;
+    private bool isGrounded;
+    private int extraJumps;
 
-    public float jumpingPower = 16f;
+    public float jumpingPower;
     public float speed;
-    public int jumpCount = 0;
+    public int extraJumpsValue;
 
     public Animator animator;
+    public ParticleSystem dust;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundcheck;
     [SerializeField] private LayerMask groundLayer;
-    void Update()
-    {
-        //Asign the horizontal variable to the input value of the horizontal axis
-        horizontal = Input.GetAxisRaw("Horizontal");
 
+    private void Start()
+    {
+        extraJumps = extraJumpsValue;
+    }
+    void Update()
+    { 
         animator.SetFloat("Speed", Mathf.Abs(horizontal));
 
-        Flip();
-
-        if (Input.GetButtonDown("Jump") && IsGrounded() || Input.GetButtonDown("Jump") && !IsGrounded() && jumpCount <= 1)
+        if (Input.GetButtonDown("Jump") && isGrounded && extraJumps > 0)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
-        }
-        
-        if(Input.GetButtonUp("Jump"))
-        {
-            jumpCount++;
-        }
-
-        if(!IsGrounded())
-        {
+            rb.velocity = Vector2.up * jumpingPower;
             animator.SetBool("isJumping", true);
+            extraJumps--;
+            dust.Play();
         }
-        else
+        else if(Input.GetButtonDown("Jump") && extraJumps == 0)
         {
-            animator.SetBool("isJumping", false);
-            jumpCount = 0;
+            rb.velocity = Vector2.up * jumpingPower;
+            extraJumps--;
         }
     }
 
     private void FixedUpdate()
     {
-        //We multiply the input value from horizontal axis by a variable speed float, y velocity stays the same.
-        if (IsGrounded())
-        {
-            rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
-        }
-        else
-        {
-            rb.velocity = new Vector2(horizontal * 4f, rb.velocity.y);
-        }
-    }
-
-    private bool IsGrounded()
-    {
+        //Asign the horizontal variable to the input value of the horizontal axis
+        horizontal = Input.GetAxisRaw("Horizontal");
+        
         //OverlapCircle basically creates a circle that checks if it is colliding with anything, in the codeline we especify to filter to check objects on the ground layer
-        return Physics2D.OverlapCircle(groundcheck.position, 0.2f, groundLayer);
+        isGrounded = Physics2D.OverlapCircle(groundcheck.position, 0.1f, groundLayer);
+
+        //We multiply the input value from horizontal axis by a variable speed float, y velocity stays the same.
+        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+
+        Flip();
+
+        if (isGrounded && rb.velocity.y == 0)
+        {
+            extraJumps = extraJumpsValue;
+            animator.SetBool("isJumping", false);
+        }
     }
     private void Flip()
     {
-        if(isFacingRight && horizontal > 0f || !isFacingRight && horizontal < 0f)
+        if (isFacingRight && horizontal > 0f || !isFacingRight && horizontal < 0f)
         {
             isFacingRight = !isFacingRight;
             Vector3 localscale = transform.localScale;
             localscale.x *= -1;
             transform.localScale = localscale;
+            if (isGrounded)
+            {
+                dust.Play();
+            }
         }
     }
 
