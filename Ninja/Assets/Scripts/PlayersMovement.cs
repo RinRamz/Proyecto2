@@ -13,9 +13,8 @@ public class PlayersMovement : MonoBehaviour
     public float speed;
     public int extraJumpsValue;
 
-    public Animator animator;
-    public ParticleSystem dust;
-
+    [SerializeField] private Animator animator;
+    [SerializeField] private ParticleSystem dust;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundcheck;
     [SerializeField] private LayerMask groundLayer;
@@ -73,6 +72,14 @@ public class PlayersMovement : MonoBehaviour
             {
                 dust.Play();
             }
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(extraJumps < extraJumpsValue)
+        {
+            dust.Play();
         }
     }
 
