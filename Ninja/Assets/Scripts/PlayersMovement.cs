@@ -24,20 +24,14 @@ public class PlayersMovement : MonoBehaviour
         extraJumps = extraJumpsValue;
     }
     void Update()
-    { 
+    {
         animator.SetFloat("Speed", Mathf.Abs(horizontal));
 
-        if (Input.GetButtonDown("Jump") && isGrounded && extraJumps > 0)
+        Jump();
+
+        if(isGrounded)
         {
-            rb.velocity = Vector2.up * jumpingPower;
-            animator.SetBool("isJumping", true);
-            extraJumps--;
-            dust.Play();
-        }
-        else if(Input.GetButtonDown("Jump") && extraJumps == 0)
-        {
-            rb.velocity = Vector2.up * jumpingPower;
-            extraJumps--;
+            Instantiate(dust, groundcheck);
         }
     }
 
@@ -45,7 +39,7 @@ public class PlayersMovement : MonoBehaviour
     {
         //Asign the horizontal variable to the input value of the horizontal axis
         horizontal = Input.GetAxisRaw("Horizontal");
-        
+
         //OverlapCircle basically creates a circle that checks if it is colliding with anything, in the codeline we especify to filter to check objects on the ground layer
         isGrounded = Physics2D.OverlapCircle(groundcheck.position, 0.1f, groundLayer);
 
@@ -75,13 +69,27 @@ public class PlayersMovement : MonoBehaviour
         }
     }
 
+    private void Jump()
+    {
+        if (Input.GetButtonDown("Jump") && isGrounded && extraJumps > 0)
+        {
+            rb.velocity = Vector2.up * jumpingPower;
+            animator.SetBool("isJumping", true);
+            extraJumps--;
+            dust.Play();
+        }
+        else if (Input.GetButtonDown("Jump") && extraJumps == 0)
+        {
+            rb.velocity = Vector2.up * jumpingPower;
+            extraJumps--;
+        }
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(extraJumps < extraJumpsValue)
+        if(isGrounded && rb.velocity.y == 0 && extraJumps < extraJumpsValue)
         {
             dust.Play();
         }
     }
-
 }
 
