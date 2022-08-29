@@ -557,6 +557,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpingPower: 6
   speed: 8
+  negativeSpeed: 20
   extraJumpsValue: 1
   animator: {fileID: 869697686}
   dust: {fileID: 1654233028}

@@ -11,6 +11,7 @@ public class PlayersMovement : MonoBehaviour
 
     public float jumpingPower;
     public float speed;
+    public float negativeSpeed;
     public int extraJumpsValue;
 
     [SerializeField] private Animator animator;
@@ -28,11 +29,6 @@ public class PlayersMovement : MonoBehaviour
         animator.SetFloat("Speed", Mathf.Abs(horizontal));
 
         Jump();
-
-        if(isGrounded)
-        {
-            Instantiate(dust, groundcheck);
-        }
     }
 
     private void FixedUpdate()
@@ -53,6 +49,7 @@ public class PlayersMovement : MonoBehaviour
             extraJumps = extraJumpsValue;
             animator.SetBool("isJumping", false);
         }
+
     }
     private void Flip()
     {
@@ -68,7 +65,6 @@ public class PlayersMovement : MonoBehaviour
             }
         }
     }
-
     private void Jump()
     {
         if (Input.GetButtonDown("Jump") && isGrounded && extraJumps > 0)
@@ -82,6 +78,12 @@ public class PlayersMovement : MonoBehaviour
         {
             rb.velocity = Vector2.up * jumpingPower;
             extraJumps--;
+        }
+
+        if (!isGrounded && !Input.GetButton("Jump"))
+        {
+            //rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * negativeSpeed);
+            rb.velocity += Vector2.down * negativeSpeed * Time.deltaTime;
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
