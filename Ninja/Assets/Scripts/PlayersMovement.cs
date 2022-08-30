@@ -14,14 +14,17 @@ public class PlayersMovement : MonoBehaviour
     public float negativeSpeed;
     public int extraJumpsValue;
 
+    PlayerCombat attack;
+
     [SerializeField] private Animator animator;
     [SerializeField] private ParticleSystem dust;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundcheck;
     [SerializeField] private LayerMask groundLayer;
 
-    private void Start()
+    private void Awake()
     {
+        attack = GetComponent<PlayerCombat>();
         extraJumps = extraJumpsValue;
     }
     void Update()
@@ -40,7 +43,10 @@ public class PlayersMovement : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundcheck.position, 0.1f, groundLayer);
 
         //We multiply the input value from horizontal axis by a variable speed float, y velocity stays the same.
-        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+        if (!attack.isAttacking)
+        {
+            rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+        }
 
         Flip();
 
@@ -67,7 +73,7 @@ public class PlayersMovement : MonoBehaviour
     }
     private void Jump()
     {
-        if (Input.GetButtonDown("Jump") && isGrounded && extraJumps > 0)
+        if (Input.GetButtonDown("Jump") && isGrounded && extraJumps > 0 && !attack.isAttacking)
         {
             rb.velocity = Vector2.up * jumpingPower;
             animator.SetBool("isJumping", true);
@@ -88,7 +94,7 @@ public class PlayersMovement : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(isGrounded && rb.velocity.y == 0 && extraJumps < extraJumpsValue)
+        if (isGrounded && rb.velocity.y == 0 && extraJumps < extraJumpsValue)
         {
             dust.Play();
         }

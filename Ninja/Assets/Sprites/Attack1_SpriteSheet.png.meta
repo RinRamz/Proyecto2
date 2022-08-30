@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: dd6d4042b86c7f245aa8b88ab4cd7ef4
+guid: f7c4fdef36e27e14cb2971e565c0d9ba
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SpriteSheet_Jump_0
+      name: Attack_SpriteSheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -130,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d7355d4a98ccaea4f889a13e26351ff0
-      internalID: 465149425
+      spriteID: 084317617bbc9b24a956d1169281dc4d
+      internalID: 1976952628
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteSheet_Jump_1
+      name: Attack_SpriteSheet_1
       rect:
         serializedVersion: 2
         x: 256
@@ -151,14 +151,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 36c2732182ebae148a104e7bb228eab8
-      internalID: -1443024924
+      spriteID: f8d2fa6619a622e498690a6eb2ff977f
+      internalID: -1407280404
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteSheet_Jump_2
+      name: Attack_SpriteSheet_2
       rect:
         serializedVersion: 2
         x: 512
@@ -172,14 +172,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 240e356fb1976474d87094928781d29d
-      internalID: -596792520
+      spriteID: 445c6af9cceb515438be3e62671b6404
+      internalID: -1622940439
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteSheet_Jump_3
+      name: Attack_SpriteSheet_3
       rect:
         serializedVersion: 2
         x: 768
@@ -193,8 +193,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d96775ab67ba4134c8cb5a77a3b60ec8
-      internalID: 1786624313
+      spriteID: 9b43747cf3c71cc449504e9750b6a5fe
+      internalID: -1655225397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_SpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c22fdcf6d69df64f97b5bcfb8ccad28
+      internalID: -1190619829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_SpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30a4362646e8b424dbe220cc156785f4
+      internalID: 1539415107
       vertices: []
       indices: 
       edges: []
@@ -210,10 +252,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SpriteSheet_Jump_1: -1443024924
-      SpriteSheet_Jump_0: 465149425
-      SpriteSheet_Jump_2: -596792520
-      SpriteSheet_Jump_3: 1786624313
+      Attack_SpriteSheet_0: 1976952628
+      Attack_SpriteSheet_5: 1539415107
+      Attack_SpriteSheet_2: -1622940439
+      Attack_SpriteSheet_1: -1407280404
+      Attack_SpriteSheet_3: -1655225397
+      Attack_SpriteSheet_4: -1190619829
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
