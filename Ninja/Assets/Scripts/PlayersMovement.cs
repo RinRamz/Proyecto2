@@ -43,9 +43,11 @@ public class PlayersMovement : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundcheck.position, 0.1f, groundLayer);
 
         //We multiply the input value from horizontal axis by a variable speed float, y velocity stays the same.
-        if (!attack.isAttacking)
+        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+
+        if (attack.isAttacking && isGrounded)
         {
-            rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+            rb.velocity = new Vector2(0, rb.velocity.y);
         }
 
         Flip();

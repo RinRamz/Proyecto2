@@ -7,8 +7,10 @@ public class PlayerCombat : MonoBehaviour
     Animator animator;
 
     public bool isAttacking;
-    int numAttacks;
+    int numAttacks = 2;
 
+    public float starTimeBtwAttack = 0.3f;
+    public float timeBtwAttack = 0f;
     float attackRate = 4f;
     float nextAttackTime = 0f;
     private void Awake()
@@ -33,20 +35,31 @@ public class PlayerCombat : MonoBehaviour
                 numAttacks = 1;
                 nextAttackTime = Time.time + 1f / attackRate;
             }
-            else if (Input.GetButton("Fire1") && numAttacks == 1)
+            else if (Input.GetButtonDown("Fire1") && numAttacks == 1)
             {
                 animator.SetTrigger("isAttacking2");
                 numAttacks = 0;
             }
 
-            if (!Input.GetButton("Fire1"))
+            if(isAttacking)
+            {
+                timeBtwAttack -= Time.deltaTime;
+            }
+            else
+            {
+                timeBtwAttack = starTimeBtwAttack;
+            }
+
+            if (timeBtwAttack <= 0)
             {
                 animator.SetBool("isAttacking", false);
                 animator.SetBool("isAttacking2", false);
                 isAttacking = false;
                 numAttacks = 2;
             }
+
+
         }
-        
+
     }
 }
