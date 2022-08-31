@@ -15,16 +15,18 @@ public class PlayersMovement : MonoBehaviour
     public int extraJumpsValue;
 
     PlayerCombat attack;
+    Animator animator;
+    Rigidbody2D rb;
 
-    [SerializeField] private Animator animator;
     [SerializeField] private ParticleSystem dust;
-    [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundcheck;
     [SerializeField] private LayerMask groundLayer;
 
     private void Awake()
     {
         attack = GetComponent<PlayerCombat>();
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         extraJumps = extraJumpsValue;
     }
     void Update()
