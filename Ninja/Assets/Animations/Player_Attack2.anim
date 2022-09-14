@@ -30,7 +30,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.375
+        time: 0.25
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -39,7 +39,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.625
+        time: 0.5
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -58,13 +58,13 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 130513037, guid: f19dc1d7e3c8d944088b8e1bc53f036d, type: 3}
-    - time: 0.375
+    - time: 0.25
       value: {fileID: 1960745296, guid: f19dc1d7e3c8d944088b8e1bc53f036d, type: 3}
-    - time: 0.5
+    - time: 0.375
       value: {fileID: 283585073, guid: f19dc1d7e3c8d944088b8e1bc53f036d, type: 3}
-    - time: 0.625
+    - time: 0.5
       value: {fileID: 487152025, guid: f19dc1d7e3c8d944088b8e1bc53f036d, type: 3}
-    - time: 0.75
+    - time: 0.625
       value: {fileID: -777181944, guid: f19dc1d7e3c8d944088b8e1bc53f036d, type: 3}
     attribute: m_Sprite
     path: 
@@ -102,7 +102,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.875
+    m_StopTime: 0.75
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -131,7 +131,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.375
+        time: 0.25
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -140,7 +140,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.625
+        time: 0.5
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -159,8 +159,8 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.75
-    functionName: finishCombo
+  - time: 0.625
+    functionName: FinishCombo
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
