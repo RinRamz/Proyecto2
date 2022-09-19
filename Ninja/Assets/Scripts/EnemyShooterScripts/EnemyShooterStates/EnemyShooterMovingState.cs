@@ -1,26 +1,37 @@
+using TMPro;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
 public class EnemyShooterMovingState : EnemyShooterBaseState
 {
-    bool inRangeofSight;
+    public EnemyShooterMovingState(EnemyShootherStateManager currentContext, EnemyShooterStateFactory enemyShooterStateFactory)
+    : base(currentContext, enemyShooterStateFactory) { }
 
-    public override void EnterState(EnemyShootherStateManager enemyShooter)
+
+    public override void EnterState()
     {
-        enemyShooter.animator.Play("Player_Run");
+        _context.Animator.Play("Player_Run");
     }
 
-    public override void UpdatetState(EnemyShootherStateManager enemyShooter)
+    public override void UpdatetState()
     {
-        inRangeofSight = Physics2D.OverlapCircle(enemyShooter.transform.position, enemyShooter.sightRange, enemyShooter.playerLayer);
+        CheckIfSwitchStates();
+        _context.Move();
+    }
 
-        Vector2 target = new Vector2(enemyShooter.player.position.x, enemyShooter.rb.position.y);
-        Vector2 newPos = Vector2.MoveTowards(enemyShooter.transform.position, target, enemyShooter.speed * Time.fixedDeltaTime);
-        enemyShooter.rb.MovePosition(newPos);
+    public override void ExitState()
+    {
+    }
 
-        if(!inRangeofSight)
+    public override void CheckIfSwitchStates()
+    {
+        if (!_context.InRangeOfSight)
         {
-            enemyShooter.changeState(enemyShooter.idleState);
+            SwitchState(_enemyShooterStateFactory.Idle());
+        }
+        else if (_context.InRangeOfAttack)
+        {
+            SwitchState(_enemyShooterStateFactory.Attacking());
         }
     }
 }

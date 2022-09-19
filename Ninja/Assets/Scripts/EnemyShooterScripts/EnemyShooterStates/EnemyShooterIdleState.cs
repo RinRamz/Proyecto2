@@ -2,19 +2,27 @@ using UnityEngine;
 
 public class EnemyShooterIdleState : EnemyShooterBaseState
 {
-    bool inRangeofSight;
-    public override void EnterState(EnemyShootherStateManager enemyShooter)
+    public EnemyShooterIdleState(EnemyShootherStateManager currentContext, EnemyShooterStateFactory enemyShooterStateFactory)
+    : base(currentContext, enemyShooterStateFactory) { }
+
+    public override void EnterState()
     {
-        enemyShooter.animator.Play("Player_Iddle");
+        _context.Animator.Play("Player_Iddle");
     }
 
-    public override void UpdatetState(EnemyShootherStateManager enemyShooter)
+    public override void UpdatetState()
     {
-        inRangeofSight = Physics2D.OverlapCircle(enemyShooter.transform.position, enemyShooter.sightRange, enemyShooter.playerLayer);
+        CheckIfSwitchStates();
+    }
+    public override void ExitState()
+    {
+    }
 
-        if (inRangeofSight)
+    public override void CheckIfSwitchStates()
+    {
+        if (_context.InRangeOfSight)
         {
-            enemyShooter.changeState(enemyShooter.movingState);
+            SwitchState(_enemyShooterStateFactory.Moving());
         }
     }
 }

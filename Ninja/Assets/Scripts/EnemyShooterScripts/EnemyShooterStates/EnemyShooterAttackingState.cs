@@ -1,12 +1,30 @@
+using TMPro.EditorUtilities;
 using UnityEngine;
 
 public class EnemyShooterAttackingState : EnemyShooterBaseState
 {
-    public override void EnterState(EnemyShootherStateManager enemyShooter)
+    public EnemyShooterAttackingState(EnemyShootherStateManager currentContext, EnemyShooterStateFactory enemyShooterStateFactory)
+    : base(currentContext, enemyShooterStateFactory) { }
+    public override void EnterState()
+    {
+        _context.Animator.Play("Player_Iddle");
+        _context.Attack();
+    }
+
+    public override void UpdatetState()
+    {
+        CheckIfSwitchStates();
+        _context.Attack();
+    }
+    public override void ExitState()
     {
     }
 
-    public override void UpdatetState(EnemyShootherStateManager enemyShooter)
+    public override void CheckIfSwitchStates()
     {
+        if (!_context.InRangeOfAttack)
+        {
+            SwitchState(_enemyShooterStateFactory.Moving());
+        }
     }
 }

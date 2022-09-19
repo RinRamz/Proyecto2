@@ -4,33 +4,34 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class PlayerMovingState : PlayerBaseState
 {
-    float horizontal;
-    float speed = 8;
-    public override void EnterState(PlayerStateManager player)
+    public PlayerMovingState(PlayerStateManager currentContext, PlayerStateFactory playerStateFactory)
+    : base (currentContext, playerStateFactory) {}
+
+public override void EnterState()
     {
-        player.animator.Play("Player_Run");
-        
-        if (horizontal > 0 && player.isFacingRight) player.Flip();
-        if (horizontal < 0 && !player.isFacingRight) player.Flip();
+        _context.Animator.Play("Player_Run");
+        _context.Flip();
     }
 
-    public override void UpdatetState(PlayerStateManager player)
+    public override void UpdatetState()
     {
-        horizontal = Input.GetAxisRaw("Horizontal");
-        player.rb.velocity = new Vector2(horizontal * speed, player.rb.velocity.y);
-
-        if (horizontal > 0 && player.isFacingRight) player.Flip();
-        if (horizontal < 0 && !player.isFacingRight) player.Flip();
-
-        if (horizontal == 0f)
+        CheckIfSwitchStates();
+        _context.Flip();
+        _context.Move();
+    }
+    public override void ExitState()
+    {
+    }
+    public override void CheckIfSwitchStates()
+    {
+        if (_context.HorizontalInput == 0f)
         {
-            player.ChangeState(player.iddleState);
+            SwitchState(_playerStateFactory.Idle());
         }
 
         if (Input.GetButtonDown("Jump"))
         {
-            player.ChangeState(player.jumpState);
+            SwitchState(_playerStateFactory.Jump());
         }
     }
-
 }

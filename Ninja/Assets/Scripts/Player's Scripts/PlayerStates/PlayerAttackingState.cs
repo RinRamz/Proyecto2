@@ -3,24 +3,32 @@ using UnityEngine;
 
 public class PlayerAttackingState : PlayerBaseState
 {
-    public override void EnterState(PlayerStateManager player)
+    public PlayerAttackingState(PlayerStateManager currentContext, PlayerStateFactory playerStateFactory)
+    : base ( currentContext, playerStateFactory) {}
+
+    public override void EnterState()
     {
-        player.animator.Play("Player_Attack");
-        player.isAttacking = true;
+        _context.Animator.Play("Player_Attack");
+        _context.IsAttacking = true;
     }
 
-    public override void UpdatetState(PlayerStateManager player)
+    public override void UpdatetState()
     {
+        CheckIfSwitchStates();
         if (Input.GetButtonDown("Fire1"))
         {
-            player.animator.Play("Player_Attack2");
+            _context.Animator.Play("Player_Attack2");
         }
-        
-        if (!player.isAttacking)
+    }
+    public override void ExitState()
+    {
+    }
+    public override void CheckIfSwitchStates()
+    {
+        if (!_context.IsAttacking)
         {
-            player.ChangeState(player.iddleState);
+            SwitchState(_playerStateFactory.Idle());
         }
     }
 
-   
 }
