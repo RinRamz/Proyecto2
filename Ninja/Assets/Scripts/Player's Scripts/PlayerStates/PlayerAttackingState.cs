@@ -18,6 +18,7 @@ public class PlayerAttackingState : PlayerBaseState
         if (Input.GetButtonDown("Fire1"))
         {
             _context.Animator.Play("Player_Attack2");
+            _context.IsInSecondAttack = true;
         }
     }
     public override void ExitState()

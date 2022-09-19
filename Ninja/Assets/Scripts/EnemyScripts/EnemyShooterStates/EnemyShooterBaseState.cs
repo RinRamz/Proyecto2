@@ -1,6 +1,3 @@
-using Unity.VisualScripting.FullSerializer;
-using UnityEngine;
-
 public abstract class EnemyShooterBaseState
 {
     protected EnemyShootherStateManager _context;

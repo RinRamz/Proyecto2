@@ -12,7 +12,9 @@ public class PlayerStateManager : MonoBehaviour
     private Rigidbody2D _rigidbody2D = default;
     private Animator _animator = default;
     private bool _isFacingRight;
+    private int _damage = 20;
     private bool _isAttacking = false;
+    private bool _isInSecondAttack = false;
     private int _extraJumps = 2;
     private float _horizontalInput;
     private float _movementSpeed = 8f;
@@ -28,11 +30,13 @@ public class PlayerStateManager : MonoBehaviour
     public Rigidbody2D Rigidbody2D { get { return _rigidbody2D; } }
     public Animator Animator { get { return _animator; } }
     public bool IsAttacking { get { return _isAttacking; } set { _isAttacking = value; } }
+    public bool IsInSecondAttack { get { return _isInSecondAttack; } set { _isInSecondAttack = value; } }
     public int ExtraJumps { get { return _extraJumps; } set { _extraJumps = value; } }
     public float HorizontalInput { get { return _horizontalInput; } }
     public float MovementSpeed { get { return _movementSpeed; } }
     public float NegativeJumpingSpeed { get { return _negativeJumpingSpeed; } }
     public float JumpingPower { get { return _jumpingPower; } } 
+    public int Damage { get { return _damage; } }
     public bool IsGrounded { get { return _isGrounded; } set { _isGrounded = value; } }
 
     private void Awake()
@@ -71,5 +75,6 @@ public class PlayerStateManager : MonoBehaviour
     public void FinishCombo()
     {
         _isAttacking = false;
+        _isInSecondAttack = false;
     }
 }

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Enemies
   - PlayerSword
+  - Attack1Collider
+  - Attack2Collider
   layers:
   - Default
   - TransparentFX

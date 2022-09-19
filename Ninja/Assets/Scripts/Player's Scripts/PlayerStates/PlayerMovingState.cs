@@ -11,6 +11,7 @@ public override void EnterState()
     {
         _context.Animator.Play("Player_Run");
         _context.Flip();
+        _context.Move();
     }
 
     public override void UpdatetState()
@@ -32,6 +33,11 @@ public override void EnterState()
         if (Input.GetButtonDown("Jump"))
         {
             SwitchState(_playerStateFactory.Jump());
+        }
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            SwitchState(_playerStateFactory.Attacking());
         }
     }
 }
