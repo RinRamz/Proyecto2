@@ -3,11 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
+<<<<<<< HEAD
   tags:
   - Enemies
   - PlayerSword
   - Attack1Collider
   - Attack2Collider
+=======
+  tags: []
+>>>>>>> parent of 15b80a5 (Changes)
   layers:
   - Default
   - TransparentFX

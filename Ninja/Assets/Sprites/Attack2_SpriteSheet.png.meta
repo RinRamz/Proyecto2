@@ -1,9 +1,13 @@
 fileFormatVersion: 2
-guid: 482f0f71fd8d91841a46036abaa4b3ba
+<<<<<<<< HEAD:Ninja/Assets/Sprites/EnemySprites/BasicEnemy/RunEnemyBasic_SpriteSheet.png.meta
+guid: 1479a5bf7362bde45ac5a2dfae25c8a9
+========
+guid: f19dc1d7e3c8d944088b8e1bc53f036d
+>>>>>>>> parent of 15b80a5 (Changes):Ninja/Assets/Sprites/Attack2_SpriteSheet.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -63,6 +67,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -100,23 +105,15 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SpriteSheet_Jump_0
+<<<<<<<< HEAD:Ninja/Assets/Sprites/EnemySprites/BasicEnemy/RunEnemyBasic_SpriteSheet.png.meta
+      name: RunEnemyBasic_SpriteSheet_0
+========
+      name: Attack2_SpriteSheet_0
+>>>>>>>> parent of 15b80a5 (Changes):Ninja/Assets/Sprites/Attack2_SpriteSheet.png.meta
       rect:
         serializedVersion: 2
         x: 0
@@ -130,14 +127,23 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d7355d4a98ccaea4f889a13e26351ff0
-      internalID: 465149425
+<<<<<<<< HEAD:Ninja/Assets/Sprites/EnemySprites/BasicEnemy/RunEnemyBasic_SpriteSheet.png.meta
+      spriteID: 1e0c99ead1456f04ca3b3d24e485566f
+      internalID: -1956049758
+========
+      spriteID: fccc4118f9c994141ae99ace413a27d4
+      internalID: 246445181
+>>>>>>>> parent of 15b80a5 (Changes):Ninja/Assets/Sprites/Attack2_SpriteSheet.png.meta
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteSheet_Jump_1
+<<<<<<<< HEAD:Ninja/Assets/Sprites/EnemySprites/BasicEnemy/RunEnemyBasic_SpriteSheet.png.meta
+      name: RunEnemyBasic_SpriteSheet_1
+========
+      name: Attack2_SpriteSheet_1
+>>>>>>>> parent of 15b80a5 (Changes):Ninja/Assets/Sprites/Attack2_SpriteSheet.png.meta
       rect:
         serializedVersion: 2
         x: 256
@@ -151,14 +157,23 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 36c2732182ebae148a104e7bb228eab8
-      internalID: -1443024924
+<<<<<<<< HEAD:Ninja/Assets/Sprites/EnemySprites/BasicEnemy/RunEnemyBasic_SpriteSheet.png.meta
+      spriteID: c6fdecde69e54664aadffe100064f05f
+      internalID: 1094160552
+========
+      spriteID: dedcaad8107a8d841bfcc04bcc0a24c5
+      internalID: -1754452791
+>>>>>>>> parent of 15b80a5 (Changes):Ninja/Assets/Sprites/Attack2_SpriteSheet.png.meta
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteSheet_Jump_2
+<<<<<<<< HEAD:Ninja/Assets/Sprites/EnemySprites/BasicEnemy/RunEnemyBasic_SpriteSheet.png.meta
+      name: RunEnemyBasic_SpriteSheet_2
+========
+      name: Attack2_SpriteSheet_2
+>>>>>>>> parent of 15b80a5 (Changes):Ninja/Assets/Sprites/Attack2_SpriteSheet.png.meta
       rect:
         serializedVersion: 2
         x: 512
@@ -172,14 +187,23 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 240e356fb1976474d87094928781d29d
-      internalID: -596792520
+<<<<<<<< HEAD:Ninja/Assets/Sprites/EnemySprites/BasicEnemy/RunEnemyBasic_SpriteSheet.png.meta
+      spriteID: 3e1cf293f263cee40ae9ed39e1abf04e
+      internalID: 1637159318
+========
+      spriteID: 83ba07c3ad51d3c40943d4473abd05c2
+      internalID: 666258081
+>>>>>>>> parent of 15b80a5 (Changes):Ninja/Assets/Sprites/Attack2_SpriteSheet.png.meta
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteSheet_Jump_3
+<<<<<<<< HEAD:Ninja/Assets/Sprites/EnemySprites/BasicEnemy/RunEnemyBasic_SpriteSheet.png.meta
+      name: RunEnemyBasic_SpriteSheet_3
+========
+      name: Attack2_SpriteSheet_3
+>>>>>>>> parent of 15b80a5 (Changes):Ninja/Assets/Sprites/Attack2_SpriteSheet.png.meta
       rect:
         serializedVersion: 2
         x: 768
@@ -193,8 +217,34 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d96775ab67ba4134c8cb5a77a3b60ec8
-      internalID: 1786624313
+<<<<<<<< HEAD:Ninja/Assets/Sprites/EnemySprites/BasicEnemy/RunEnemyBasic_SpriteSheet.png.meta
+      spriteID: 374535635e949cf42a41f8fe3a7e6dab
+      internalID: 881417259
+========
+      spriteID: 84fda1fd045f6704886bc163e04a2cd8
+      internalID: 690402126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack2_SpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 242d66801f43d664fa07ccbd248cb7c3
+      internalID: 1769064386
+>>>>>>>> parent of 15b80a5 (Changes):Ninja/Assets/Sprites/Attack2_SpriteSheet.png.meta
       vertices: []
       indices: 
       edges: []
@@ -210,10 +260,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SpriteSheet_Jump_1: -1443024924
-      SpriteSheet_Jump_0: 465149425
-      SpriteSheet_Jump_2: -596792520
-      SpriteSheet_Jump_3: 1786624313
+<<<<<<<< HEAD:Ninja/Assets/Sprites/EnemySprites/BasicEnemy/RunEnemyBasic_SpriteSheet.png.meta
+      RunEnemyBasic_SpriteSheet_2: 1637159318
+      RunEnemyBasic_SpriteSheet_0: -1956049758
+      RunEnemyBasic_SpriteSheet_3: 881417259
+      RunEnemyBasic_SpriteSheet_1: 1094160552
+========
+      Attack2_SpriteSheet_4: 1769064386
+      Attack2_SpriteSheet_2: 666258081
+      Attack2_SpriteSheet_3: 690402126
+      Attack2_SpriteSheet_0: 246445181
+      Attack2_SpriteSheet_1: -1754452791
+>>>>>>>> parent of 15b80a5 (Changes):Ninja/Assets/Sprites/Attack2_SpriteSheet.png.meta
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

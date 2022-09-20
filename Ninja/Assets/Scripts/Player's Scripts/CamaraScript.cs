@@ -9,6 +9,7 @@ public class CamaraScript : MonoBehaviour
     {
         Vector3 position = transform.position;
         position.x = player.transform.position.x; 
+        position.y = player.transform.position.y;
         transform.position = position;
     }
 }
