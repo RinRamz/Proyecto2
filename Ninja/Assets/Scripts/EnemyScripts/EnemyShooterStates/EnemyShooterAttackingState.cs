@@ -8,13 +8,13 @@ public class EnemyShooterAttackingState : EnemyShooterBaseState
     public override void EnterState()
     {
         _context.Animator.Play("Player_Iddle");
-        _context.Attack();
+        _context.EnemyActions.AttackRanged(_context.NextAttackTime, _context.AttackSpeed, _context.Bullet);
     }
 
     public override void UpdatetState()
     {
         CheckIfSwitchStates();
-        _context.Attack();
+        _context.EnemyActions.AttackRanged(_context.NextAttackTime, _context.AttackSpeed, _context.Bullet);
     }
     public override void ExitState()
     {

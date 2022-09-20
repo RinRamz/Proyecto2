@@ -17,7 +17,7 @@ public class EnemyBasicMovingState : EnemyBasicBaseState
     public override void UpdatetState()
     {
         CheckIfSwitchStates();
-        _context.Move();
+        _context.EnemyActions.Move(_context.PlayerPos, _context.Rigidbody2D, _context.MovementSpeed);
     }
 
     public override void ExitState()
