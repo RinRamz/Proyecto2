@@ -25,19 +25,14 @@ public override void EnterState()
     }
     public override void CheckIfSwitchStates()
     {
-        if (_context.HorizontalInput == 0f)
+        if (_context.HorizontalInput.x == 0f)
         {
             SwitchState(_playerStateFactory.Idle());
         }
 
-        if (Input.GetButtonDown("Jump"))
+        if (_context.InputManager.IsJumpPressed())
         {
             SwitchState(_playerStateFactory.Jump());
-        }
-
-        if (Input.GetButtonDown("Fire1"))
-        {
-            SwitchState(_playerStateFactory.Attacking());
         }
     }
 }

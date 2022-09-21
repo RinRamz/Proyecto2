@@ -10,16 +10,27 @@ public class PlayerJumpingState : PlayerBaseState
     {
         _context.Animator.Play("Player_Jump");
         _context.Dust.Play();
-        _context.Rigidbody2D.velocity = Vector2.up * _context.JumpingPower;
-        _context.ExtraJumps--;
+        _context.Jump();
     }
 
     public override void UpdatetState()
     {
         CheckIfSwitchStates();
+        if (_context.InputManager.IsJumpPressed() && _context.ExtraJumps > 0)
+        {
+            _context.Jump();
+        }
+        
+        /*
+        if (!_context.InputManager.IsJumpHold() && !_context.IsGrounded)
+        {
+            _context.Rigidbody2D.velocity += Vector2.down * _context.NegativeJumpingSpeed * Time.deltaTime;
+        }
+         */
+         
+        
         _context.Move();
         _context.Flip();
-        Jump();
     }
     public override void ExitState()
     {
@@ -32,17 +43,5 @@ public class PlayerJumpingState : PlayerBaseState
             SwitchState(_playerStateFactory.Landing());
         }
     }
-    public void Jump()
-    {
-        if (Input.GetButtonDown("Jump") && _context.ExtraJumps > 0)
-        {
-            _context.Rigidbody2D.velocity = Vector2.up * _context.JumpingPower;
-            _context.ExtraJumps--;
-        }
 
-        if (!Input.GetButton("Jump") && !_context.IsGrounded)
-        {
-            _context.Rigidbody2D.velocity += Vector2.down * _context.NegativeJumpingSpeed * Time.deltaTime;
-        }
-    }
 }

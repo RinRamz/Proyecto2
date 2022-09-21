@@ -19,15 +19,15 @@ public class PlayerIdleState : PlayerBaseState
     }
     public override void CheckIfSwitchStates()
     {
-        if (_context.HorizontalInput < 0 || _context.HorizontalInput > 0)
+        if (_context.HorizontalInput.x < 0 || _context.HorizontalInput.x > 0)
         {
             SwitchState(_playerStateFactory.Moving());
         }
-        else if (Input.GetButtonDown("Jump"))
+        else if (_context.InputManager.IsJumpPressed())
         {
             SwitchState(_playerStateFactory.Jump());
         }
-        else if (Input.GetButtonDown("Fire1"))
+        else if (_context.InputManager.IsAttackPressed())
         {
             SwitchState(_playerStateFactory.Attacking());
         }

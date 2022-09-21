@@ -10,12 +10,13 @@ public class PlayerAttackingState : PlayerBaseState
     {
         _context.Animator.Play("Player_Attack");
         _context.IsAttacking = true;
+        _context.IsInFirstAttack = true;
     }
 
     public override void UpdatetState()
     {
         CheckIfSwitchStates();
-        if (Input.GetButtonDown("Fire1"))
+        if (_context.InputManager.IsAttackPressed() && !_context.IsInFirstAttack)
         {
             _context.Animator.Play("Player_Attack2");
             _context.IsInSecondAttack = true;
