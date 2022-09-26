@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemies
+  - PlayerSword
+  - Attack1Collider
+  - Attack2Collider
   layers:
   - Default
   - TransparentFX
@@ -14,7 +17,7 @@ TagManager:
   - UI
   - Ground
   - Enemies
-  - 
+  - Player
   - 
   - 
   - 
