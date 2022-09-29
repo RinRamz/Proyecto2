@@ -1,19 +1,17 @@
-using Unity.VisualScripting;
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
-
 public class PlayerStateManager : MonoBehaviour
 {
-    private InputManager _inputManager;
     private PlayerBaseState _currentState = default;
     private PlayerStateFactory _states = default;
 
     private ParticleSystem _dust = default;
     private Rigidbody2D _rigidbody2D = default;
     private Animator _animator = default;
-    private Vector2 _horizontalInput;
-    private bool _isFacingRight;
     private int _damage = 20;
+    private bool _isFacingRight = default;
+    private bool _isAttackHold = default;
+    private bool _isAttackPressed = default;
+    private bool _isJumpPressed = default;
     private bool _isAttacking = false;
     private bool _isInFirstAttack = false;
     private bool _isInSecondAttack = false;
@@ -21,31 +19,32 @@ public class PlayerStateManager : MonoBehaviour
     private float _movementSpeed = 8f;
     private float _negativeJumpingSpeed = 16f;
     private float _jumpingPower = 8f;
-    private bool _isGrounded = true;
+    private bool _isGrounded = default;
+    private float _input = default;
     [SerializeField] private Transform _groundCheck = default;
     [SerializeField] private LayerMask _groundLayer = default;
 
     //Getters and Setters
     public PlayerBaseState CurrentState { get { return _currentState; } set { _currentState = value; } }
-    public ParticleSystem Dust { get { return _dust; } }
-    public Rigidbody2D Rigidbody2D { get { return _rigidbody2D; } }
-    public Animator Animator { get { return _animator; } }
-    public Vector2 HorizontalInput { get { return _horizontalInput; } }
-    public InputManager InputManager { get { return _inputManager; } }  
+    public ParticleSystem Dust => _dust;
+    public Rigidbody2D Rigidbody2D => _rigidbody2D;
+    public Animator Animator => _animator;
+    public bool IsAttackHold => _isAttackHold;
+    public bool IsAttackPressed => _isAttackPressed;
+    public bool IsJumpPressed => _isJumpPressed;
     public bool IsAttacking { get { return _isAttacking; } set { _isAttacking = value; } }
     public bool IsInSecondAttack { get { return _isInSecondAttack; } set { _isInSecondAttack = value; } }
     public bool IsInFirstAttack { get { return _isInFirstAttack; } set { _isInFirstAttack = value; } }
     public int ExtraJumps { get { return _extraJumps; } set { _extraJumps = value; } }
-    public float MovementSpeed { get { return _movementSpeed; } }
-    public float NegativeJumpingSpeed { get { return _negativeJumpingSpeed; } }
-    public float JumpingPower { get { return _jumpingPower; } } 
-    public int Damage { get { return _damage; } }
+    public float MovementSpeed => _movementSpeed;
+    public float NegativeJumpingSpeed => _negativeJumpingSpeed;
+    public float JumpingPower => _jumpingPower;
+    public int Damage => _damage;
     public bool IsGrounded { get { return _isGrounded; } set { _isGrounded = value; } }
+    public float Input => _input;
 
     private void Awake()
     {
-        _inputManager = InputManager.Instance;
-
         _dust = GetComponentInChildren<ParticleSystem>();
         _animator = GetComponent<Animator>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -60,12 +59,11 @@ public class PlayerStateManager : MonoBehaviour
         _currentState.UpdatetState();
 
         _isGrounded = Physics2D.OverlapCircle(_groundCheck.position, 0.1f, _groundLayer);
-        _horizontalInput = _inputManager.GetMovement();
     }
 
     public void Flip()
     {
-        if (_horizontalInput.x > 0 && _isFacingRight || _horizontalInput.x < 0 && !_isFacingRight)
+        if (_input > 0 && _isFacingRight || _input < 0 && !_isFacingRight)
         {
             _isFacingRight = !_isFacingRight;
             transform.Rotate(0f, 180f, 0f);
@@ -74,7 +72,34 @@ public class PlayerStateManager : MonoBehaviour
 
     public void Move()
     {
-        _rigidbody2D.velocity = new Vector2(_horizontalInput.x * _movementSpeed, _rigidbody2D.velocity.y);
+        _rigidbody2D.velocity = new Vector2(_input * _movementSpeed, _rigidbody2D.velocity.y);
+    }
+
+
+    public void JumpButtonPressed()
+    {
+        _isJumpPressed = true;
+    }
+
+    public void JumpButtonRealesed()
+    {
+        _isJumpPressed = false;
+    }
+
+    public void AttackButtonPressed()
+    {
+        _isAttackPressed = true;
+    }
+
+    public void AttackButtonHold()
+    {
+        _isAttackHold = true;
+    }
+
+    public void AttackButtonRealesed()
+    {
+        _isAttackPressed = false;
+        _isAttackHold = false;
     }
 
     public void Jump()
@@ -93,5 +118,25 @@ public class PlayerStateManager : MonoBehaviour
     public void StartCombo()
     {
         _isInFirstAttack = false;
+    }
+
+    public void MoveLeft()
+    {
+        _input = -1;
+    }
+
+    public void MoveRight()
+    {
+        _input = 1;
+    }
+
+    public void ResetLeft()
+    {
+        _input = _input == -1 ? 0f : _input;
+    }
+
+    public void ResetRight()
+    {
+        _input = _input == 1 ? 0f : _input;
     }
 }

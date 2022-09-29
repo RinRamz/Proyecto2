@@ -16,18 +16,15 @@ public class PlayerJumpingState : PlayerBaseState
     public override void UpdatetState()
     {
         CheckIfSwitchStates();
-        if (_context.InputManager.IsJumpPressed() && _context.ExtraJumps > 0)
+        if (_context.IsJumpPressed && _context.ExtraJumps > 0)
         {
             _context.Jump();
         }
-        
-        /*
-        if (!_context.InputManager.IsJumpHold() && !_context.IsGrounded)
+
+        if (!_context.IsJumpPressed && !_context.IsGrounded)
         {
             _context.Rigidbody2D.velocity += Vector2.down * _context.NegativeJumpingSpeed * Time.deltaTime;
         }
-         */
-         
         
         _context.Move();
         _context.Flip();

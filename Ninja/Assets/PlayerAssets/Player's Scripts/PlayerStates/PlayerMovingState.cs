@@ -1,7 +1,3 @@
-using Microsoft.Win32.SafeHandles;
-using UnityEngine;
-using static UnityEngine.RuleTile.TilingRuleOutput;
-
 public class PlayerMovingState : PlayerBaseState
 {
     public PlayerMovingState(PlayerStateManager currentContext, PlayerStateFactory playerStateFactory)
@@ -25,12 +21,12 @@ public override void EnterState()
     }
     public override void CheckIfSwitchStates()
     {
-        if (_context.HorizontalInput.x == 0f)
+        if (_context.Input == 0f)
         {
             SwitchState(_playerStateFactory.Idle());
         }
 
-        if (_context.InputManager.IsJumpPressed())
+        if (_context.IsJumpPressed)
         {
             SwitchState(_playerStateFactory.Jump());
         }

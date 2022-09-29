@@ -16,7 +16,7 @@ public class PlayerAttackingState : PlayerBaseState
     public override void UpdatetState()
     {
         CheckIfSwitchStates();
-        if (_context.InputManager.IsAttackPressed() && !_context.IsInFirstAttack)
+        if (_context.IsAttackHold && !_context.IsInFirstAttack)
         {
             _context.Animator.Play("Player_Attack2");
             _context.IsInSecondAttack = true;

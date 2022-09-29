@@ -20,11 +20,11 @@ public class PlayerLandingState : PlayerBaseState
     }
     public override void CheckIfSwitchStates()
     {
-        if (_context.HorizontalInput.x == 0f)
+        if (_context.Input == 0f)
         {
             SwitchState(_playerStateFactory.Idle());
         }
-        else if (_context.HorizontalInput.x < 0 || _context.HorizontalInput.x > 0)
+        else if (_context.Input < 0 || _context.Input > 0)
         {
             SwitchState(_playerStateFactory.Moving());
         }
