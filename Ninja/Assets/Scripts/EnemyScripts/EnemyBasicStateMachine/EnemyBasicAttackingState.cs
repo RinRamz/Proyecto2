@@ -11,13 +11,13 @@ public class EnemyBasicAttackingState : EnemyBasicBaseState
 
     public override void EnterState()
     {
-        _context.Attack();
+        _context.EnemyActions.AttackMelee(_context.NextAttackTime, _context.AttackSpeed, _context.Animator);
     }
 
     public override void UpdatetState()
     {
         CheckIfSwitchStates();
-        _context.Attack();  
+        _context.EnemyActions.AttackMelee(_context.NextAttackTime, _context.AttackSpeed, _context.Animator);
     }
 
     public override void ExitState()

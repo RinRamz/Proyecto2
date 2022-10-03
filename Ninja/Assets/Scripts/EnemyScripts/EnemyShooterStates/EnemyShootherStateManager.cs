@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class EnemyShootherStateManager : MonoBehaviour
 {
+    private EnemyManager _enemyActions;
+    private EnemyShootherStateManager _stateManager = default;
     private EnemyShooterBaseState _currentState = default;
     private EnemyShooterStateFactory _states = default;
 
@@ -21,16 +23,24 @@ public class EnemyShootherStateManager : MonoBehaviour
     private bool _inRangeofAttack = false;
 
     //Getters and Setters 
+    public EnemyManager EnemyActions { get { return _enemyActions; } }
+    public EnemyShootherStateManager StateManager { get { return _stateManager; } }
+    public Transform PlayerPos { get { return _player; } }
+    public Rigidbody2D Rigidbody2D { get { return _rigidBody2D; } }
     public EnemyShooterBaseState CurrentState { get { return _currentState; } set { _currentState = value; } }
     public Animator Animator { get { return _animator; } }
     public GameObject Bullet { get { return _bullet; } }
+    public float AttackSpeed { get { return _attackSpeed; } }
+    public float NextAttackTime { get { return _nextAttackTime; } }
+    public float MovementSpeed { get { return _movementSpeed; } }
     public bool InRangeOfSight { get { return _inRangeofSight; } set { _inRangeofSight = value; } }
     public bool InRangeOfAttack { get { return _inRangeofAttack; } set { _inRangeofSight = value; } }
     private void Awake()
     {
         _animator = GetComponent<Animator>();
         _rigidBody2D = GetComponent<Rigidbody2D>();
-        
+        _enemyActions = GetComponent<EnemyManager>();
+
         _states = new EnemyShooterStateFactory(this);
         _currentState = _states.Idle();
         _currentState.EnterState();
@@ -41,6 +51,7 @@ public class EnemyShootherStateManager : MonoBehaviour
         _currentState.UpdatetState();
         _inRangeofSight = Physics2D.OverlapCircle(transform.position, _sightRange, _playerLayer);
         _inRangeofAttack = Physics2D.OverlapCircle(transform.position, _attackRange, _playerLayer);
+        _enemyActions.CheckIfDied(_hp, gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -48,33 +59,14 @@ public class EnemyShootherStateManager : MonoBehaviour
         if (collision.CompareTag("Attack1Collider"))
         {
             int damage = collision.GetComponentInParent<PlayerStateManager>().Damage;
-            GetDamaged(damage);
+            _hp = _enemyActions.GetDamaged(damage, _hp);
         }
         else if (collision.CompareTag("Attack2Collider"))
         {
             int damage = collision.GetComponentInParent<PlayerStateManager>().Damage;
-            GetDamaged(Mathf.RoundToInt(damage * 1.75f));
+            _hp = _enemyActions.GetDamaged(Mathf.RoundToInt(damage * 1.75f), _hp);
         }
     }
 
-    public void Move()
-    {
-        Vector2 target = new Vector2(_player.position.x, _rigidBody2D.position.y);
-        Vector2 newPos = Vector2.MoveTowards(transform.position, target, _movementSpeed * Time.fixedDeltaTime);
-        _rigidBody2D.MovePosition(newPos);
-    }
-
-    public void Attack()
-    {
-        if (Time.time >= _nextAttackTime)
-        {
-            Instantiate(_bullet, transform.position, Quaternion.identity);
-            _nextAttackTime = Time.time + 1f / _attackSpeed;
-        }
-    }
-
-    public void GetDamaged(int damage)
-    {
-        _hp -= damage;
-    }
+    
 }
