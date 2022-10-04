@@ -1,8 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using UnityEngine;
-
 public class EnemyBasicAttackingState : EnemyBasicBaseState
 {
     public EnemyBasicAttackingState(EnemyBasicStateManager currentContext, EnemyBasicStateFactory enemyBasicStateFactory)
@@ -29,6 +24,10 @@ public class EnemyBasicAttackingState : EnemyBasicBaseState
         if (!_context.InRangeOfAttack)
         {
             SwitchState(_enemyBasicStateFactory.Moving());
+        }
+        if (_context.ReceivedDamaged)
+        {
+            SwitchState(_enemyBasicStateFactory.Damaged());
         }
     }
 }

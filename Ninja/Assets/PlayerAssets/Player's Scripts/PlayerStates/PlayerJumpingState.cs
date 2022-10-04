@@ -16,12 +16,13 @@ public class PlayerJumpingState : PlayerBaseState
     public override void UpdatetState()
     {
         CheckIfSwitchStates();
-        if (_context.IsJumpPressed && _context.ExtraJumps > 0)
+
+        if (_context.IsJumpPressed && _context.ExtraJumps > 0 && _context.CanJumpAgain)
         {
             _context.Jump();
         }
 
-        if (!_context.IsJumpPressed && !_context.IsGrounded)
+        if (!_context.IsJumpPressed)
         {
             _context.Rigidbody2D.velocity += Vector2.down * _context.NegativeJumpingSpeed * Time.deltaTime;
         }
@@ -32,6 +33,7 @@ public class PlayerJumpingState : PlayerBaseState
     public override void ExitState()
     {
         _context.ExtraJumps = 2;
+        _context.CanJumpAgain = false;
     }
     public override void CheckIfSwitchStates()
     {

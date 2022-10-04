@@ -26,4 +26,9 @@ public class EnemyBasicStateFactory
     {
         return new EnemyBasicPatrollingState(_context, this);
     }
+
+    public EnemyBasicBaseState Damaged()
+    {
+        return new EnemyBasicGetDamaged(_context, this);
+    }
 }

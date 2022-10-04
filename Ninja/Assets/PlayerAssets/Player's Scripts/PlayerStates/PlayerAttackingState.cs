@@ -1,5 +1,4 @@
-using System.Runtime.InteropServices;
-using UnityEngine;
+using TMPro;
 
 public class PlayerAttackingState : PlayerBaseState
 {
@@ -8,6 +7,7 @@ public class PlayerAttackingState : PlayerBaseState
 
     public override void EnterState()
     {
+        _context.StartCoroutine(_context.AttackTimer());
         _context.Animator.Play("Player_Attack");
         _context.IsAttacking = true;
         _context.IsInFirstAttack = true;
@@ -16,7 +16,7 @@ public class PlayerAttackingState : PlayerBaseState
     public override void UpdatetState()
     {
         CheckIfSwitchStates();
-        if (_context.IsAttackHold && !_context.IsInFirstAttack)
+        if (_context.IsAttackPressed && !_context.IsInFirstAttack)
         {
             _context.Animator.Play("Player_Attack2");
             _context.IsInSecondAttack = true;
