@@ -4,11 +4,12 @@ namespace Ninja
 {
     public class CamaraScript : MonoBehaviour
     {
-        [SerializeField] private GameObject player = default;
+        [SerializeField] private GameObject _player = default;
+        
         void Update()
         {
             Vector3 position = transform.position;
-            position.x = player.transform.position.x;
+            position.x = _player.transform.position.x;
             transform.position = position;
         }
     }

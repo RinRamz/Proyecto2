@@ -14,6 +14,7 @@ namespace Ninja
         {
             CheckIfSwitchStates();
         }
+        
         public override void ExitState()
         {
         }

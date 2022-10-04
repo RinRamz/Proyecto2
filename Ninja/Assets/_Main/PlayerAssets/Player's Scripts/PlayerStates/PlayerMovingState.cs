@@ -18,9 +18,11 @@ namespace Ninja
             _context.Flip();
             _context.Move();
         }
+       
         public override void ExitState()
         {
         }
+        
         public override void CheckIfSwitchStates()
         {
             if (_context.Input == 0f)

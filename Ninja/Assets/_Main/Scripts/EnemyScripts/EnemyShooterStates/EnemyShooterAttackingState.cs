@@ -4,6 +4,7 @@ namespace Ninja
     {
         public EnemyShooterAttackingState(EnemyShootherStateManager currentContext, EnemyShooterStateFactory enemyShooterStateFactory)
         : base(currentContext, enemyShooterStateFactory) { }
+
         public override void EnterState()
         {
             _context.Animator.Play("Player_Iddle");
@@ -15,6 +16,7 @@ namespace Ninja
             CheckIfSwitchStates();
             _context.NextAttackTime = _context.EnemyActions.AttackRanged(_context.NextAttackTime, _context.AttackSpeed, _context.Bullet);
         }
+
         public override void ExitState()
         {
         }

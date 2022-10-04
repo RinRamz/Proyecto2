@@ -4,7 +4,7 @@ namespace Ninja
 {
     public class Singleton<T> : MonoBehaviour where T : Component
     {
-        private static T _instance;
+        private static T _instance = default;
 
         public static T Instance
         {
@@ -16,7 +16,6 @@ namespace Ninja
                     gameObject.name = typeof(T).Name;
                     gameObject.hideFlags = HideFlags.HideAndDontSave;
                     _instance = gameObject.AddComponent<T>();
-
                 }
                 return _instance;
             }

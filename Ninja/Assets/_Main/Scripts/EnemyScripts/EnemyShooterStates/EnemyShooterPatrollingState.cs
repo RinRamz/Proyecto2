@@ -4,6 +4,7 @@ namespace Ninja
     {
         public EnemyShooterPatrollingState(EnemyShootherStateManager currentContext, EnemyShooterStateFactory enemyShooterStateFactory)
         : base(currentContext, enemyShooterStateFactory) { }
+
         public override void EnterState()
         {
         }

@@ -5,7 +5,6 @@ namespace Ninja
         public EnemyShooterMovingState(EnemyShootherStateManager currentContext, EnemyShooterStateFactory enemyShooterStateFactory)
         : base(currentContext, enemyShooterStateFactory) { }
 
-
         public override void EnterState()
         {
             _context.Animator.Play("Player_Run");

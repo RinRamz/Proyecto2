@@ -9,13 +9,16 @@ namespace Ninja
         {
             _context.Animator.Play("Player_Iddle");
         }
+        
         public override void UpdatetState()
         {
             CheckIfSwitchStates();
         }
+        
         public override void ExitState()
         {
         }
+        
         public override void CheckIfSwitchStates()
         {
             if (_context.Input < 0 || _context.Input > 0)

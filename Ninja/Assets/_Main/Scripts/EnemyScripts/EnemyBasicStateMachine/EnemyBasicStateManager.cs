@@ -26,13 +26,12 @@ namespace Ninja
         private bool _receivedDamage = default;
         private bool _isCrit = default;
 
-
         //Getters and Setters 
         public EnemyBasicBaseState CurrentState { get { return _currentState; } set { _currentState = value; } }
         public EnemyManager EnemyActions => _enemyActions;
         public EnemyBasicStateManager StateManager => _stateManager;
         public PlayerStateManager PlayerStateManager => _playerStateManager;
-        public Rigidbody2D Rigidbody2D => _rigidBody2D; 
+        public Rigidbody2D Rigidbody2D => _rigidBody2D;
         public Transform PlayerPos => _player;
         public Animator Animator => _animator;
         public float Hp { get { return _hp; } set { _hp = value; } }
@@ -90,7 +89,6 @@ namespace Ninja
                 _receivedDamage = false;
                 _isCrit = false;
             }
-
         }
     }
 }

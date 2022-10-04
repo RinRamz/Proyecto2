@@ -5,7 +5,6 @@ namespace Ninja
         public PlayerLandingState(PlayerStateManager currentContext, PlayerStateFactory playerStateFactory)
         : base(currentContext, playerStateFactory) { }
 
-
         public override void EnterState()
         {
             _context.Dust.Play();
@@ -15,9 +14,11 @@ namespace Ninja
         {
             CheckIfSwitchStates();
         }
+        
         public override void ExitState()
         {
         }
+        
         public override void CheckIfSwitchStates()
         {
             if (_context.Input == 0f)

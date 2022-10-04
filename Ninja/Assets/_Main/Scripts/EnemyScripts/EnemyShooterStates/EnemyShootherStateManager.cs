@@ -37,6 +37,7 @@ namespace Ninja
         public bool InRangeOfAttack { get { return _inRangeofAttack; } set { _inRangeofSight = value; } }
         public float AttackSpeed => _attackSpeed;
         public float MovementSpeed => _movementSpeed;
+
         private void Awake()
         {
             _animator = GetComponent<Animator>();
@@ -69,7 +70,5 @@ namespace Ninja
                 _hp = _enemyActions.GetDamaged(Mathf.RoundToInt(damage * 1.75f), _hp);
             }
         }
-
-
     }
 }

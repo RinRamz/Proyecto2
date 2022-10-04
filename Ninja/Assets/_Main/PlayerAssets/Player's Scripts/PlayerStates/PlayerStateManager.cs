@@ -67,6 +67,7 @@ namespace Ninja
             _currentState = _states.Idle();
             _currentState.EnterState();
         }
+        
         private void Update()
         {
             _currentState.UpdatetState();

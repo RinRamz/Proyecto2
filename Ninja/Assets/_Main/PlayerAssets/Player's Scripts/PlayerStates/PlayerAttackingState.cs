@@ -22,9 +22,11 @@ namespace Ninja
                 _context.IsInSecondAttack = true;
             }
         }
+
         public override void ExitState()
         {
         }
+
         public override void CheckIfSwitchStates()
         {
             if (!_context.IsAttacking)

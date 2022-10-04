@@ -31,11 +31,13 @@ namespace Ninja
             _context.Move();
             _context.Flip();
         }
+        
         public override void ExitState()
         {
             _context.ExtraJumps = 2;
             _context.CanJumpAgain = false;
         }
+        
         public override void CheckIfSwitchStates()
         {
             if (_context.IsGrounded && _context.Rigidbody2D.velocity.y == 0)

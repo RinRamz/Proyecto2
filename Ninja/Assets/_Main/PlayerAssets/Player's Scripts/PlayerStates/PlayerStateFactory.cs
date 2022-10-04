@@ -13,6 +13,7 @@ namespace Ninja
         {
             return new PlayerIdleState(_context, this);
         }
+        
         public PlayerBaseState Jump()
         {
             return new PlayerJumpingState(_context, this);
