@@ -27,7 +27,7 @@ public class PlayerIdleState : PlayerBaseState
         {
             SwitchState(_playerStateFactory.Jump());
         }
-        else if (_context.IsAttackPressed)
+        else if (_context.IsAttackPressed && _context.CanAttackAgain)
         {
             SwitchState(_playerStateFactory.Attacking());
         }

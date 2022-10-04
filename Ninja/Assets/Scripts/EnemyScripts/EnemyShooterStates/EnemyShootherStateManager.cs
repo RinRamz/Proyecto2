@@ -31,7 +31,7 @@ public class EnemyShootherStateManager : MonoBehaviour
     public Animator Animator { get { return _animator; } }
     public GameObject Bullet { get { return _bullet; } }
     public float AttackSpeed { get { return _attackSpeed; } }
-    public float NextAttackTime { get { return _nextAttackTime; } }
+    public float NextAttackTime { get { return _nextAttackTime; } set { _nextAttackTime = value; } }
     public float MovementSpeed { get { return _movementSpeed; } }
     public bool InRangeOfSight { get { return _inRangeofSight; } set { _inRangeofSight = value; } }
     public bool InRangeOfAttack { get { return _inRangeofAttack; } set { _inRangeofSight = value; } }

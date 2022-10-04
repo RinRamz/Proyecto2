@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class EnemyBasicMovingState : EnemyBasicBaseState
@@ -17,7 +14,7 @@ public class EnemyBasicMovingState : EnemyBasicBaseState
     public override void UpdatetState()
     {
         CheckIfSwitchStates();
-        _context.EnemyActions.Move(_context.PlayerPos, _context.Rigidbody2D, _context.MovementSpeed);
+        _context.EnemyActions.Move(_context.transform, _context.PlayerPos, _context.Rigidbody2D, _context.MovementSpeed);
     }
 
     public override void ExitState()
