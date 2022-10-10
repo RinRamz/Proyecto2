@@ -28,5 +28,10 @@ namespace Ninja
         {
             return new EnemyShooterPatrollingState(_context, this);
         }
+
+        public EnemyShooterBaseState Damaged()
+        {
+            return new EnemyShooterGetDamaged(_context, this);
+        }
     }
 }

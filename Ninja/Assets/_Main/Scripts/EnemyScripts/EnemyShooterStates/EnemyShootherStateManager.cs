@@ -8,6 +8,7 @@ namespace Ninja
         private EnemyShootherStateManager _stateManager = default;
         private EnemyShooterBaseState _currentState = default;
         private EnemyShooterStateFactory _states = default;
+        private PlayerStateManager _playerStateManager = default;
 
         [SerializeField] private float _hp = 85f;
         [SerializeField] private LayerMask _playerLayer = default;
@@ -23,15 +24,23 @@ namespace Ninja
         private float _nextAttackTime = 0f;
         private bool _inRangeofSight = false;
         private bool _inRangeofAttack = false;
+        private bool _receivedDamage = default;
+        private bool _isCrit = default;
+        public float _pushForce = default;
 
         //Getters and Setters 
         public EnemyShooterBaseState CurrentState { get { return _currentState; } set { _currentState = value; } }
         public EnemyManager EnemyActions => _enemyActions;
         public EnemyShootherStateManager StateManager => _stateManager;
+        public PlayerStateManager PlayerStateManager => _playerStateManager;
         public Transform PlayerPos => _player;
         public Rigidbody2D Rigidbody2D => _rigidBody2D;
         public GameObject Bullet => _bullet;
         public Animator Animator => _animator;
+        public float Hp { get { return _hp; } set { _hp = value; } }
+        public bool IsCrit => _isCrit;
+        public bool ReceivedDamage => _receivedDamage;
+        public float PushForce => _pushForce;
         public float NextAttackTime { get { return _nextAttackTime; } set { _nextAttackTime = value; } }
         public bool InRangeOfSight { get { return _inRangeofSight; } set { _inRangeofSight = value; } }
         public bool InRangeOfAttack { get { return _inRangeofAttack; } set { _inRangeofSight = value; } }
@@ -43,6 +52,7 @@ namespace Ninja
             _animator = GetComponent<Animator>();
             _rigidBody2D = GetComponent<Rigidbody2D>();
             _enemyActions = GetComponent<EnemyManager>();
+            _playerStateManager = GetComponent<PlayerStateManager>();
 
             _states = new EnemyShooterStateFactory(this);
             _currentState = _states.Idle();
@@ -61,13 +71,42 @@ namespace Ninja
         {
             if (collision.CompareTag("Attack1Collider"))
             {
-                int damage = collision.GetComponentInParent<PlayerStateManager>().Damage;
-                _hp = _enemyActions.GetDamaged(damage, _hp);
+                if (collision.GetComponentInParent<Transform>().position.x > transform.position.x)
+                {
+                    _pushForce = -4f;
+                }
+                else
+                {
+                    _pushForce = 4f;
+                }
+                _isCrit = Random.Range(0, 100) < _playerStateManager.CritChance;
+                _receivedDamage = true;
             }
             else if (collision.CompareTag("Attack2Collider"))
             {
-                int damage = collision.GetComponentInParent<PlayerStateManager>().Damage;
-                _hp = _enemyActions.GetDamaged(Mathf.RoundToInt(damage * 1.75f), _hp);
+                if (collision.GetComponentInParent<Transform>().position.x > transform.position.x)
+                {
+                    _pushForce = -4f;
+                }
+                else
+                {
+                    _pushForce = 4f;
+                }
+                _isCrit = Random.Range(0, 100) < (_playerStateManager.CritChance * 1.5);
+                _receivedDamage = true;
+            }
+        }
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.CompareTag("Attack1Collider"))
+            {
+                _receivedDamage = false;
+                _isCrit = false;
+            }
+            else if (collision.CompareTag("Attack2Collider"))
+            {
+                _receivedDamage = false;
+                _isCrit = false;
             }
         }
     }

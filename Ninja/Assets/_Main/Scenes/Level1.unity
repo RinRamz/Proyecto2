@@ -504,6 +504,7 @@ MonoBehaviour:
     m_Bits: 256
   _player: {fileID: 869697686}
   _hp: 120
+  _pushForce: 0
 --- !u!1 &461625202
 GameObject:
   m_ObjectHideFlags: 0
@@ -712,7 +713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f144a104b486d59458c1004181d56898, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 869697680}
+  _player: {fileID: 869697680}
 --- !u!1 &605458134
 GameObject:
   m_ObjectHideFlags: 0
@@ -786,8 +787,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -63, y: 50}
-  m_SizeDelta: {x: 202.24072, y: 150}
+  m_AnchoredPosition: {x: -58, y: 54.96}
+  m_SizeDelta: {x: 155.2837, y: 93.3989}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &671174662
 MonoBehaviour:
@@ -1105,8 +1106,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -286.87964, y: 50.5}
-  m_SizeDelta: {x: 202.24072, y: 150}
+  m_AnchoredPosition: {x: -245, y: 54.96}
+  m_SizeDelta: {x: 155.2837, y: 93.3989}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1172809038
 MonoBehaviour:
@@ -1231,6 +1232,7 @@ MonoBehaviour:
     m_Bits: 256
   _bullet: {fileID: 730683619155453870, guid: 30d75f5d584ebf1438605a62bb4aff9b, type: 3}
   _player: {fileID: 869697686}
+  _pushForce: 0
 --- !u!95 &1203382359
 Animator:
   serializedVersion: 4
@@ -1667,8 +1669,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 318.64, y: 50}
-  m_SizeDelta: {x: 274.64038, y: 155.9429}
+  m_AnchoredPosition: {x: 223.94, y: 50}
+  m_SizeDelta: {x: 178.9354, y: 101.3182}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1271187597
 MonoBehaviour:
@@ -2120,7 +2122,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 45, y: 51}
-  m_SizeDelta: {x: 273.64038, y: 154.94287}
+  m_SizeDelta: {x: 178.9354, y: 101.3182}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1580079879
 MonoBehaviour:

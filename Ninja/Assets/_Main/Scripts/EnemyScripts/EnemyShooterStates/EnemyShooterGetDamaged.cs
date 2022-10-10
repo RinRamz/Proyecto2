@@ -2,10 +2,10 @@ using UnityEngine;
 
 namespace Ninja
 {
-    public class EnemyBasicGetDamaged : EnemyBasicBaseState
+    public class EnemyShooterGetDamaged : EnemyShooterBaseState
     {
-        public EnemyBasicGetDamaged(EnemyBasicStateManager currentContext, EnemyBasicStateFactory enemyBasicStateFactory)
-        : base(currentContext, enemyBasicStateFactory) { }
+        public EnemyShooterGetDamaged(EnemyShootherStateManager currentContext, EnemyShooterStateFactory enemyShooterStateFactory)
+        : base(currentContext, enemyShooterStateFactory) { }
 
         public override void EnterState()
         {
@@ -23,7 +23,7 @@ namespace Ninja
 
         public override void UpdatetState()
         {
-            CheckIfSwitchStates();
+            CheckIfSwitchStates();  
         }
 
         public override void ExitState()
@@ -34,10 +34,11 @@ namespace Ninja
 
         public override void CheckIfSwitchStates()
         {
-            if (!_context.ReceivedDamaged)
+            if (!_context.ReceivedDamage)
             {
-                SwitchState(_enemyBasicStateFactory.Attacking());
+                SwitchState(_enemyShooterStateFactory.Attacking());
             }
         }
+
     }
 }

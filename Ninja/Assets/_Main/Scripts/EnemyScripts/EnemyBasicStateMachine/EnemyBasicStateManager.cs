@@ -21,6 +21,7 @@ namespace Ninja
         private float _movementSpeed = 4.5f;
         private float _attackSpeed = 1f;
         private float _nextAttackTime = 0f;
+        public float _pushForce = default;
         private bool _inRangeofSight = false;
         private bool _inRangeofAttack = false;
         private bool _receivedDamage = default;
@@ -35,6 +36,7 @@ namespace Ninja
         public Transform PlayerPos => _player;
         public Animator Animator => _animator;
         public float Hp { get { return _hp; } set { _hp = value; } }
+        public float PushForce => _pushForce;
         public bool InRangeOfAttack { get { return _inRangeofAttack; } set { _inRangeofSight = value; } }
         public bool InRangeOfSight { get { return _inRangeofSight; } set { _inRangeofSight = value; } }
         public float AttackSpeed => _attackSpeed;
@@ -67,11 +69,27 @@ namespace Ninja
         {
             if (collision.CompareTag("Attack1Collider"))
             {
+                if (collision.GetComponentInParent<Transform>().position.x > transform.position.x)
+                {
+                    _pushForce = -4f;
+                }
+                else
+                {
+                    _pushForce = 4f;
+                }
                 _isCrit = Random.Range(0, 100) < _playerStateManager.CritChance;
                 _receivedDamage = true;
             }
             else if (collision.CompareTag("Attack2Collider"))
             {
+                if (collision.GetComponentInParent<Transform>().position.x > transform.position.x)
+                {
+                    _pushForce = -4f;
+                }
+                else
+                {
+                    _pushForce = 4f;
+                }
                 _isCrit = Random.Range(0, 100) < (_playerStateManager.CritChance * 1.5);
                 _receivedDamage = true;
             }
