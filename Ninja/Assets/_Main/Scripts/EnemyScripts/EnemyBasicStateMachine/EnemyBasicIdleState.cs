@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace Ninja
 {
     public class EnemyBasicIdleState : EnemyBasicBaseState
@@ -24,6 +26,11 @@ namespace Ninja
             if (_context.InRangeOfSight)
             {
                 SwitchState(_enemyBasicStateFactory.Moving());
+            }
+
+            if (_context.ShouldPatrol && !_context.InRangeOfSight)
+            {
+                SwitchState(_enemyBasicStateFactory.Patrolling());
             }
         }
     }

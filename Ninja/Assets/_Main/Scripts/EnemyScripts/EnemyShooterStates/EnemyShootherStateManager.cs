@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 namespace Ninja
 {
@@ -17,16 +18,19 @@ namespace Ninja
 
         private Animator _animator = default;
         private Rigidbody2D _rigidBody2D = default;
+        private Vector2 _initialPos = default;
         private float _sightRange = 7.5f;
         private float _attackRange = 5.5f;
         private float _movementSpeed = 4.5f;
         private float _attackSpeed = 1f;
+        private float _moveDistance = -6f;
         private float _nextAttackTime = 0f;
         private bool _inRangeofSight = false;
         private bool _inRangeofAttack = false;
         private bool _receivedDamage = default;
         private bool _isCrit = default;
         public float _pushForce = default;
+        private bool _shouldPatrol = true;
 
         //Getters and Setters 
         public EnemyShooterBaseState CurrentState { get { return _currentState; } set { _currentState = value; } }
@@ -37,13 +41,16 @@ namespace Ninja
         public Rigidbody2D Rigidbody2D => _rigidBody2D;
         public GameObject Bullet => _bullet;
         public Animator Animator => _animator;
+        public Vector2 InitialPos => _initialPos; 
         public float Hp { get { return _hp; } set { _hp = value; } }
         public bool IsCrit => _isCrit;
         public bool ReceivedDamage => _receivedDamage;
         public float PushForce => _pushForce;
+        public float MoveDistance { get { return _moveDistance; } set { _moveDistance = value; } }
         public float NextAttackTime { get { return _nextAttackTime; } set { _nextAttackTime = value; } }
         public bool InRangeOfSight { get { return _inRangeofSight; } set { _inRangeofSight = value; } }
         public bool InRangeOfAttack { get { return _inRangeofAttack; } set { _inRangeofSight = value; } }
+        public bool ShouldPatrol => _shouldPatrol;
         public float AttackSpeed => _attackSpeed;
         public float MovementSpeed => _movementSpeed;
 
@@ -53,6 +60,7 @@ namespace Ninja
             _rigidBody2D = GetComponent<Rigidbody2D>();
             _enemyActions = GetComponent<EnemyManager>();
             _playerStateManager = GetComponent<PlayerStateManager>();
+            _initialPos = transform.position;
 
             _states = new EnemyShooterStateFactory(this);
             _currentState = _states.Idle();
@@ -95,6 +103,13 @@ namespace Ninja
                 _isCrit = Random.Range(0, 100) < (_playerStateManager.CritChance * 1.5);
                 _receivedDamage = true;
             }
+
+            if (collision.CompareTag("EnemyWall"))
+            {
+                _moveDistance = _enemyActions.FlipPatrol(transform, _moveDistance);
+                _shouldPatrol = false;
+                StartCoroutine(Patrol());
+            }
         }
         private void OnTriggerExit2D(Collider2D collision)
         {
@@ -108,6 +123,12 @@ namespace Ninja
                 _receivedDamage = false;
                 _isCrit = false;
             }
+        }
+
+        private IEnumerator Patrol()
+        {
+            yield return new WaitForSeconds(2f);
+            _shouldPatrol = true;
         }
     }
 }

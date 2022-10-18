@@ -25,6 +25,11 @@ namespace Ninja
             {
                 SwitchState(_enemyShooterStateFactory.Moving());
             }
+
+            if (_context.ShouldPatrol && !_context.InRangeOfSight)
+            {
+                SwitchState(_enemyShooterStateFactory.Patrolling());
+            }
         }
     }
 }

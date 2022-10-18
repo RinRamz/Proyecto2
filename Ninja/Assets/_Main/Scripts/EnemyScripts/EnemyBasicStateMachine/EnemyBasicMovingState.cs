@@ -14,6 +14,7 @@ namespace Ninja
         {
             CheckIfSwitchStates();
             _context.EnemyActions.Move(_context.transform, _context.PlayerPos, _context.Rigidbody2D, _context.MovementSpeed);
+            _context.EnemyActions.Flip(_context.transform, _context.PlayerPos);
         }
 
         public override void ExitState()
@@ -26,9 +27,10 @@ namespace Ninja
             {
                 SwitchState(_enemyBasicStateFactory.Attacking());
             }
-            else if (!_context.InRangeOfSight)
+            
+            if (!_context.InRangeOfSight && !_context.InRangeOfAttack)
             {
-                SwitchState(_enemyBasicStateFactory.Idle());
+                SwitchState(_enemyBasicStateFactory.Return());
             }
         }
     }

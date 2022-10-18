@@ -8,6 +8,7 @@ TagManager:
   - PlayerSword
   - Attack1Collider
   - Attack2Collider
+  - EnemyWall
   layers:
   - Default
   - TransparentFX

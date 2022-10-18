@@ -29,6 +29,11 @@ namespace Ninja
             return new EnemyBasicPatrollingState(_context, this);
         }
 
+        public EnemyBasicBaseState Return()
+        {
+            return new EnemyBasicReturnState(_context, this);
+        }
+
         public EnemyBasicBaseState Damaged()
         {
             return new EnemyBasicGetDamaged(_context, this);
