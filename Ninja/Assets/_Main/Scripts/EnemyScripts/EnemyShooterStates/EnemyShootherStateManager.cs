@@ -29,7 +29,7 @@ namespace Ninja
         private bool _inRangeofAttack = false;
         private bool _receivedDamage = default;
         private bool _isCrit = default;
-        public float _pushForce = default;
+        private float _pushForce = default;
         private bool _shouldPatrol = true;
 
         //Getters and Setters 
@@ -58,7 +58,7 @@ namespace Ninja
         {
             _animator = GetComponent<Animator>();
             _rigidBody2D = GetComponent<Rigidbody2D>();
-            _enemyActions = GetComponent<EnemyManager>();
+            _enemyActions = EnemyManager.Instance;
             _playerStateManager = GetComponent<PlayerStateManager>();
             _initialPos = transform.position;
 

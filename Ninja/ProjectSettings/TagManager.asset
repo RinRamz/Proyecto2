@@ -19,7 +19,7 @@ TagManager:
   - Ground
   - Enemies
   - Player
-  - 
+  - Obstacles
   - 
   - 
   - 
@@ -45,6 +45,9 @@ TagManager:
   m_SortingLayers:
   - name: Background
     uniqueID: 801001419
+    locked: 0
+  - name: Props
+    uniqueID: 2478636881
     locked: 0
   - name: Default
     uniqueID: 0

@@ -44,7 +44,7 @@ namespace Ninja
             return moveDistance;
         }
 
-        public float AttackRanged(float nextAttackTime, float attackSpeed, GameObject bullet)
+        public float AttackRanged(Transform transform, float nextAttackTime, float attackSpeed, GameObject bullet)
         {
             if (Time.time >= nextAttackTime)
             {

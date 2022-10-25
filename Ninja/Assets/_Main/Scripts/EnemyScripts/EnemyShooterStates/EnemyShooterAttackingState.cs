@@ -8,13 +8,13 @@ namespace Ninja
         public override void EnterState()
         {
             _context.Animator.Play("Player_Iddle");
-            _context.NextAttackTime = _context.EnemyActions.AttackRanged(_context.NextAttackTime, _context.AttackSpeed, _context.Bullet);
+            _context.NextAttackTime = _context.EnemyActions.AttackRanged(_context.transform, _context.NextAttackTime, _context.AttackSpeed, _context.Bullet);
         }
 
         public override void UpdatetState()
         {
             CheckIfSwitchStates();
-            _context.NextAttackTime = _context.EnemyActions.AttackRanged(_context.NextAttackTime, _context.AttackSpeed, _context.Bullet);
+            _context.NextAttackTime = _context.EnemyActions.AttackRanged(_context.transform, _context.NextAttackTime, _context.AttackSpeed, _context.Bullet);
         }
 
         public override void ExitState()

@@ -22,7 +22,7 @@ namespace Ninja
         private ParticleSystem _dust = default;
         private Rigidbody2D _rigidbody2D = default;
         private float _movementSpeed = 8f;
-        private float _jumpingPower = 8f;
+        private float _jumpingPower = 8.7f;
         private float _input = default;
         [SerializeField] private Transform _groundCheck = default;
         [SerializeField] private LayerMask _groundLayer = default;
