@@ -11,6 +11,7 @@ namespace Ninja
         private EnemyBasicStateFactory _states = default;
         private PlayerStateManager _playerStateManager = default;
 
+        [SerializeField] private EnemyRangeOfSight _rangeOfSight = default;
         [SerializeField] private LayerMask _playerLayer = default;
         [SerializeField] private Transform _player = default;
 
@@ -18,7 +19,6 @@ namespace Ninja
         private Vector2 _initialPos;
         private Animator _animator = default;
         private Rigidbody2D _rigidBody2D = default;
-        private float _sightRange = 6f;
         private float _attackRange = .6f;
         private float _movementSpeed = 4.5f;
         private float _attackSpeed = 1f;
@@ -68,7 +68,7 @@ namespace Ninja
         private void Update()
         {
             _currentState.UpdatetState();
-            _inRangeofSight = Physics2D.OverlapCircle(transform.position, _sightRange, _playerLayer);
+            _inRangeofSight = _rangeOfSight.InRangeofSight;
             _inRangeofAttack = Physics2D.OverlapCircle(transform.position, _attackRange, _playerLayer);
             _enemyActions.CheckIfDied(_hp, gameObject);
         }
