@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 
 namespace Ninja
@@ -11,6 +12,16 @@ namespace Ninja
 
         //Animator
         private Animator _animator = default;
+
+        //Lose canvas
+        [SerializeField] private GameObject _loseCanvas = default;
+        [SerializeField] private GameObject _mainCanvas = default;
+
+        //HP
+        [SerializeField] private float _hp = 100;
+
+        //Damaged variables
+        private bool _isDamaged = false;
 
         //Movement/Jumping variables
         private bool _isFacingRight = default;
@@ -36,6 +47,9 @@ namespace Ninja
         private int _damage = 20;
         private float _critChance = 25f;
 
+        //Defending variables
+        private bool _isDenfencePressed = false;
+
         //Getters and Setters
         public PlayerBaseState CurrentState { get { return _currentState; } set { _currentState = value; } }
         public ParticleSystem Dust => _dust;
@@ -44,7 +58,9 @@ namespace Ninja
         public bool CanAttackAgain => _canAttackAgain;
         public bool CanJumpAgain { get { return _canJumpAgain; } set { _canJumpAgain = value; } }
         public bool IsAttackPressed => _isAttackPressed;
+        public bool IsDamaged => _isDamaged;
         public bool IsJumpPressed => _isJumpPressed;
+        public bool IsDenfencePressed => _isDenfencePressed;
         public bool IsAttacking { get { return _isAttacking; } set { _isAttacking = value; } }
         public bool IsInSecondAttack { get { return _isInSecondAttack; } set { _isInSecondAttack = value; } }
         public bool IsInFirstAttack { get { return _isInFirstAttack; } set { _isInFirstAttack = value; } }
@@ -56,6 +72,7 @@ namespace Ninja
         public int Damage => _damage;
         public bool IsGrounded { get { return _isGrounded; } set { _isGrounded = value; } }
         public float Input => _input;
+        public float Hp => _hp;
 
         private void Awake()
         {
@@ -67,7 +84,7 @@ namespace Ninja
             _currentState = _states.Idle();
             _currentState.EnterState();
         }
-        
+
         private void Update()
         {
             _currentState.UpdatetState();
@@ -76,6 +93,37 @@ namespace Ninja
         private void FixedUpdate()
         {
             _isGrounded = Physics2D.OverlapCircle(_groundCheck.position, 0.1f, _groundLayer);
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.CompareTag("EnemyAttackCollider") && !IsDenfencePressed)
+            {
+                _isDamaged = true;
+                float _damage = collision.GetComponent<EnemyCombatManager>().Damage;
+                GetDamaged(_damage);
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.CompareTag("EnemyAttackCollider"))
+            {
+                _isDamaged = false;
+            }
+        }
+
+
+        public void GetDamaged(float damage)
+        {
+            _hp -= damage;
+        }
+
+        public void Die()
+        {
+            Time.timeScale = 0f;
+            _loseCanvas.SetActive(true);
+            _mainCanvas.SetActive(false);
         }
 
         public void Flip()
@@ -115,6 +163,16 @@ namespace Ninja
         public void AttackButtonRealesed()
         {
             _isAttackPressed = false;
+        }   
+        
+        public void DefenceButtonPressed()
+        {
+            _isDenfencePressed = true;
+        }
+
+        public void DefenceButtonRealesed()
+        {
+            _isDenfencePressed = false;
         }
 
         public void Jump()

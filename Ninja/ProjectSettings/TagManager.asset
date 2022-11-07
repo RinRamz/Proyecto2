@@ -9,6 +9,8 @@ TagManager:
   - Attack1Collider
   - Attack2Collider
   - EnemyWall
+  - WinTrigger
+  - EnemyAttackCollider
   layers:
   - Default
   - TransparentFX

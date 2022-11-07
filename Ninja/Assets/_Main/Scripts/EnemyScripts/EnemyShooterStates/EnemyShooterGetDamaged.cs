@@ -9,7 +9,7 @@ namespace Ninja
 
         public override void EnterState()
         {
-            _context.Animator.Play("GetDamaged_EnemyBasic");
+            _context.Animator.Play("EnemyShooter_Damaged");
             _context.Rigidbody2D.velocity = new Vector2(_context.PushForce, 2f);
             if (_context.IsCrit)
             {

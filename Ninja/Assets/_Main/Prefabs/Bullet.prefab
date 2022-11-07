@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 730683619155453869}
   - component: {fileID: -1424765454849136732}
   - component: {fileID: 7350680350790872400}
+  - component: {fileID: 6849654287528056960}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: EnemyAttackCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -157,3 +158,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6849654287528056960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730683619155453870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b179042686600dc499fd27cf519ecc2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 5

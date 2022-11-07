@@ -25,6 +25,7 @@ namespace Ninja
         private float _nextAttackTime = 0f;
         private float _moveDistance = -6f;
         private float _pushForce = default;
+        private float _damage = 10f;
         private bool _inRangeofSight = false;
         private bool _inRangeofAttack = false;
         private bool _receivedDamage = default;

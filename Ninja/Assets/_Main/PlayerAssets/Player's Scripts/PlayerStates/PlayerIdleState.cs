@@ -33,6 +33,15 @@ namespace Ninja
             {
                 SwitchState(_playerStateFactory.Attacking());
             }
+            else if (_context.IsDenfencePressed)
+            {
+                SwitchState(_playerStateFactory.Defending());
+            }
+
+            if (_context.IsDamaged)
+            {
+                SwitchState(_playerStateFactory.Damaged());
+            }
         }
     }
 }

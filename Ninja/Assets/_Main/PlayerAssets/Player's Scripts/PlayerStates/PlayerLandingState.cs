@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace Ninja
 {
     public class PlayerLandingState : PlayerBaseState
@@ -28,6 +30,11 @@ namespace Ninja
             else if (_context.Input < 0 || _context.Input > 0)
             {
                 SwitchState(_playerStateFactory.Moving());
+            }
+
+            if (_context.IsDamaged)
+            {
+                SwitchState(_playerStateFactory.Damaged());
             }
         }
     }
