@@ -40,9 +40,14 @@ namespace Ninja
         
         public override void CheckIfSwitchStates()
         {
-            if (_context.IsGrounded && _context.Rigidbody2D.velocity.y == 0)
+            if (_context.Rigidbody2D.velocity.y < 0)
             {
-                SwitchState(_playerStateFactory.Landing());
+                SwitchState(_playerStateFactory.Fall());
+            }
+
+            if (_context.IsDamaged)
+            {
+                SwitchState(_playerStateFactory.Damaged());
             }
         }
     }

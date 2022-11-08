@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8607550306105389869}
   - component: {fileID: 8607550306105389866}
   - component: {fileID: 8607550306105389867}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -80,12 +80,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 912883931, guid: 210756d7809be004482e47e6ed2e3dec, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 48248d4bb7b3d1c498b557d675c75bb3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.56, y: 2.56}
+  m_Size: {x: 3, y: 2.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -104,8 +104,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.04456705, y: -0.10297698}
-  m_Size: {x: 0.66727674, y: 1.608656}
+  m_Offset: {x: 0.14724731, y: -0.354555}
+  m_Size: {x: 0.6261902, y: 1.5367768}
   m_Direction: 0
 --- !u!50 &8607550306105389869
 Rigidbody2D:
@@ -160,15 +160,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6890391d2cc16eb44970fcd91bfdc026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dust: {fileID: 8607550307435048056}
-  rb: {fileID: 8607550306105389869}
-  animator: {fileID: 8607550306105389866}
-  isFacingRight: 0
-  groundcheck: {fileID: 8607550307542289362}
-  groundLayer:
+  _hp: 100
+  _extraJumps: 2
+  _groundCheck: {fileID: 8607550307542289362}
+  _groundLayer:
     serializedVersion: 2
-    m_Bits: 192
-  isAttacking: 0
+    m_Bits: 576
 --- !u!1 &8607550307435048061
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,7 +177,7 @@ GameObject:
   - component: {fileID: 8607550307435048062}
   - component: {fileID: 8607550307435048056}
   - component: {fileID: 8607550307435048063}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DustParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4990,7 +4987,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8607550307542289362}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: IsGrounded
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5005,7 +5002,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8607550307542289361}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.93, z: 0}
+  m_LocalPosition: {x: 0, y: -1.163, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5022,7 +5019,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8607550307601733118}
   - component: {fileID: 8607550307601733119}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 1stHit
   m_TagString: PlayerSword
   m_Icon: {fileID: 0}
@@ -5069,7 +5066,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8607550307623357647}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5103,7 +5100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8607550307777416201}
   - component: {fileID: 8607550307777416202}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 2ndHit
   m_TagString: PlayerSword
   m_Icon: {fileID: 0}

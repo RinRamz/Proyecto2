@@ -33,5 +33,20 @@ namespace Ninja
         {
             return new PlayerAttackingState(_context, this);
         }
+        
+        public PlayerBaseState Fall()
+        {
+            return new PlayerFallingState(_context, this);
+        }
+
+        public PlayerBaseState Defending()
+        {
+            return new PlayerDefendingState(_context, this);
+        }
+        
+        public PlayerBaseState Damaged()
+        {
+            return new PlayerDamagedState(_context, this);
+        }
     }
 }
