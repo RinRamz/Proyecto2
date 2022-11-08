@@ -1,3 +1,6 @@
+using TMPro;
+using UnityEngine;
+
 namespace Ninja
 {
     public class EnemyBasicAttackingState : EnemyBasicBaseState
@@ -7,13 +10,12 @@ namespace Ninja
 
         public override void EnterState()
         {
-            _context.EnemyActions.AttackMelee(_context.NextAttackTime, _context.AttackSpeed, _context.Animator);
+            _context.Animator.Play("Attack_EnemyBasic");
         }
 
         public override void UpdatetState()
         {
             CheckIfSwitchStates();
-            _context.EnemyActions.AttackMelee(_context.NextAttackTime, _context.AttackSpeed, _context.Animator);
         }
 
         public override void ExitState()
@@ -26,7 +28,7 @@ namespace Ninja
             {
                 SwitchState(_enemyBasicStateFactory.Moving());
             }
-            if (_context.ReceivedDamaged)
+            else if (_context.ReceivedDamaged)
             {
                 SwitchState(_enemyBasicStateFactory.Damaged());
             }

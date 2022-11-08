@@ -9,9 +9,8 @@ namespace Ninja
 
         public override void EnterState()
         {
-            //_context.Animator.Play("Player_Run");
             Vector3 scale = _context.transform.localScale;
-            scale.x = _context.MoveDistance > 0 ? 1f : -1f;
+            scale.x = _context.MoveDistance > 0 ? -1f : 1f;
             _context.transform.localScale = scale;
         }
 

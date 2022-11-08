@@ -1,3 +1,5 @@
+using TMPro;
+
 namespace Ninja
 {
     public class EnemyShooterMovingState : EnemyShooterBaseState
@@ -7,13 +9,13 @@ namespace Ninja
 
         public override void EnterState()
         {
-            //_context.Animator.Play("Player_Run");
         }
 
         public override void UpdatetState()
         {
             CheckIfSwitchStates();
             _context.EnemyActions.Move(_context.transform, _context.PlayerPos, _context.Rigidbody2D, _context.MovementSpeed);
+            _context.EnemyActions.Flip(_context.transform, _context.PlayerPos);
         }
 
         public override void ExitState()
@@ -24,9 +26,14 @@ namespace Ninja
         {
             if (!_context.InRangeOfSight)
             {
-                SwitchState(_enemyShooterStateFactory.Idle());
+                SwitchState(_enemyShooterStateFactory.Return());
             }
-            else if (_context.InRangeOfAttack)
+            else if (!_context.InRangeOfAttack)
+            {
+                SwitchState(_enemyShooterStateFactory.Return());
+            }
+
+            if (_context.InRangeOfAttack)
             {
                 SwitchState(_enemyShooterStateFactory.Attacking());
             }

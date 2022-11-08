@@ -1,6 +1,5 @@
-using System.Collections;
-using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
+using System.Collections;
 
 namespace Ninja
 {
@@ -45,7 +44,7 @@ namespace Ninja
         private bool _isInSecondAttack = false;
         private bool _canAttackAgain = true;
         private int _damage = 20;
-        private float _critChance = 25f;
+        private float _critChance = 100f;
 
         //Defending variables
         private bool _isDenfencePressed = false;
@@ -216,7 +215,7 @@ namespace Ninja
         public IEnumerator AttackTimer()
         {
             _canAttackAgain = false;
-            yield return new WaitForSeconds(2.4f);
+            yield return new WaitForSeconds(2f);
             _canAttackAgain = true;
         }
     }

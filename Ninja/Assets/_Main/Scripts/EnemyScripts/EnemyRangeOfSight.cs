@@ -13,7 +13,6 @@ namespace Ninja
             if (collision.CompareTag("Player"))
             {
                 _inRangeofSight = true;
-                Debug.Log("ola");
             }
         }
 

@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using System.Collections;
 
@@ -14,6 +15,7 @@ namespace Ninja
         [SerializeField] private EnemyRangeOfSight _rangeOfSight = default;
         [SerializeField] private LayerMask _playerLayer = default;
         [SerializeField] private Transform _player = default;
+        [SerializeField] private GameObject _critText = default;
 
         [SerializeField] private float _hp = 120;
         private Vector2 _initialPos;
@@ -21,11 +23,8 @@ namespace Ninja
         private Rigidbody2D _rigidBody2D = default;
         private float _attackRange = .6f;
         private float _movementSpeed = 4.5f;
-        private float _attackSpeed = 1f;
-        private float _nextAttackTime = 0f;
         private float _moveDistance = -6f;
         private float _pushForce = default;
-        private float _damage = 10f;
         private bool _inRangeofSight = false;
         private bool _inRangeofAttack = false;
         private bool _receivedDamage = default;
@@ -34,6 +33,7 @@ namespace Ninja
 
         //Getters and Setters 
         public EnemyBasicBaseState CurrentState { get { return _currentState; } set { _currentState = value; } }
+        public GameObject CritText => _critText;
         public EnemyManager EnemyActions => _enemyActions;
         public EnemyBasicStateManager StateManager => _stateManager;
         public PlayerStateManager PlayerStateManager => _playerStateManager;
@@ -47,8 +47,6 @@ namespace Ninja
         public bool InRangeOfAttack { get { return _inRangeofAttack; } set { _inRangeofSight = value; } }
         public bool InRangeOfSight { get { return _inRangeofSight; } set { _inRangeofSight = value; } }
         public bool ShouldPatrol => _shouldPatrol;
-        public float AttackSpeed => _attackSpeed;
-        public float NextAttackTime => _nextAttackTime;
         public float MovementSpeed => _movementSpeed;
         public bool IsCrit => _isCrit;
         public bool ReceivedDamaged => _receivedDamage;
@@ -78,13 +76,13 @@ namespace Ninja
         {
             if (collision.CompareTag("Attack1Collider"))
             {
-                if (collision.GetComponentInParent<Transform>().position.x > transform.position.x)
+                if (_player.position.x < transform.position.x)
                 {
-                    _pushForce = -4f;
+                    _pushForce = 4f;
                 }
                 else
                 {
-                    _pushForce = 4f;
+                    _pushForce = -4f;
                 }
                 _isCrit = Random.Range(0, 100) < _playerStateManager.CritChance;
                 _receivedDamage = true;

@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 namespace Ninja
@@ -44,28 +45,19 @@ namespace Ninja
             return moveDistance;
         }
 
-        public float AttackRanged(Transform transform, float nextAttackTime, float attackSpeed, GameObject bullet)
+        public float GetDamaged(int damage, float hp, GameObject crittext, bool isCrit, Transform transform, Transform playerPos)
         {
-            if (Time.time >= nextAttackTime)
-            {
-                Instantiate(bullet, transform.position, Quaternion.identity);
-                nextAttackTime = Time.time + 1f / attackSpeed;
-            }
-            return nextAttackTime;
-        }
+            Vector3 spawnPos = new Vector3(transform.position.x + 1f, transform.position.y + 1f);
 
-        public float AttackMelee(float nextAttackTime, float attackSpeed, Animator animator)
-        {
-            if (Time.time >= nextAttackTime)
+            if (playerPos.position.x > transform.position.x)
             {
-                animator.Play("Attack_EnemyBasic");
-                nextAttackTime = Time.time + 1f / attackSpeed;
+                spawnPos.x = transform.position.x - 1f;
             }
-            return nextAttackTime;
-        }
 
-        public float GetDamaged(int damage, float hp)
-        {
+            if (isCrit)
+            {
+                Instantiate(crittext, spawnPos, Quaternion.identity);
+            }
             hp -= damage;
             return hp;
         }
