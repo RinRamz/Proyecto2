@@ -18,8 +18,9 @@ namespace Ninja
         public override void UpdatetState()
         {
             CheckIfSwitchStates();
+            _context.Animator.Play("Player_Damaged");
         }
-       
+
         public override void ExitState()
         {
         }
@@ -29,6 +30,14 @@ namespace Ninja
             if (!_context.IsDamaged)
             {
                 SwitchState(_playerStateFactory.Idle());
+            }
+            else if (_context.IsAttackPressed && _context.CanAttackAgain)
+            {
+                SwitchState(_playerStateFactory.Attacking());
+            }
+            else if (_context.IsDenfencePressed)
+            {
+                SwitchState(_playerStateFactory.Defending());
             }
         }
     }

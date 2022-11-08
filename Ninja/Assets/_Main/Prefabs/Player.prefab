@@ -33,8 +33,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8607550307435048062}
   - {fileID: 8607550307623357647}
+  - {fileID: 8607550307435048062}
   - {fileID: 8607550307542289362}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -160,6 +160,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6890391d2cc16eb44970fcd91bfdc026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _loseCanvas: {fileID: 0}
+  _mainCanvas: {fileID: 0}
   _hp: 100
   _extraJumps: 2
   _groundCheck: {fileID: 8607550307542289362}
@@ -197,7 +199,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8607550306105389864}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &8607550307435048056
 ParticleSystem:
@@ -5018,10 +5020,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8607550307601733118}
-  - component: {fileID: 8607550307601733119}
+  - component: {fileID: 3150472223731272710}
   m_Layer: 8
   m_Name: 1stHit
-  m_TagString: PlayerSword
+  m_TagString: Attack1Collider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5034,15 +5036,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8607550307601733117}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.114, y: 0.101, z: 0}
+  m_LocalPosition: {x: 0.256, y: -0.331, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8607550307623357647}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &8607550307601733119
-CircleCollider2D:
+--- !u!61 &3150472223731272710
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -5054,9 +5056,19 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.02741313}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Size: {x: 1, y: 1.9594584}
+  m_EdgeRadius: 0
 --- !u!1 &8607550307623357646
 GameObject:
   m_ObjectHideFlags: 0
@@ -5088,7 +5100,7 @@ Transform:
   - {fileID: 8607550307601733118}
   - {fileID: 8607550307777416201}
   m_Father: {fileID: 8607550306105389864}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8607550307777416200
 GameObject:
@@ -5099,10 +5111,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8607550307777416201}
-  - component: {fileID: 8607550307777416202}
+  - component: {fileID: 7675352354188376618}
   m_Layer: 8
   m_Name: 2ndHit
-  m_TagString: PlayerSword
+  m_TagString: Attack2Collider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5115,15 +5127,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8607550307777416200}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.221, y: -0.103, z: 0}
+  m_LocalPosition: {x: 0.04, y: -0.281, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8607550307623357647}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &8607550307777416202
-CapsuleCollider2D:
+--- !u!61 &7675352354188376618
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -5135,6 +5147,16 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 1}
-  m_Direction: 0
+  m_Offset: {x: 0.0034255981, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.36949158, y: 1}
+  m_EdgeRadius: 0

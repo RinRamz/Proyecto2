@@ -1,3 +1,5 @@
+using TMPro;
+
 namespace Ninja
 {
     public class EnemyShooterAttackingState : EnemyShooterBaseState
@@ -8,13 +10,11 @@ namespace Ninja
         public override void EnterState()
         {
             _context.Animator.Play("EnemyShooter_Attack");
-            _context.NextAttackTime = _context.EnemyActions.AttackRanged(_context.transform, _context.NextAttackTime, _context.AttackSpeed, _context.Bullet);
         }
 
         public override void UpdatetState()
         {
             CheckIfSwitchStates();
-            _context.NextAttackTime = _context.EnemyActions.AttackRanged(_context.transform, _context.NextAttackTime, _context.AttackSpeed, _context.Bullet);
         }
 
         public override void ExitState()
@@ -26,6 +26,10 @@ namespace Ninja
             if (!_context.InRangeOfAttack)
             {
                 SwitchState(_enemyShooterStateFactory.Moving());
+            }
+            if (_context.ReceivedDamage)
+            {
+                SwitchState(_enemyShooterStateFactory.Damaged());
             }
         }
     }

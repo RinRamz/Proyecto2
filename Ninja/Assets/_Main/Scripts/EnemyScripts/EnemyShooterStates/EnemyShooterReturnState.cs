@@ -7,7 +7,6 @@ namespace Ninja
 
         public override void EnterState()
         {
-            //_context.Animator.Play("EnemyShooter");
         }
 
         public override void UpdatetState()

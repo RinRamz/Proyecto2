@@ -33,11 +33,6 @@ namespace Ninja
             {
                 SwitchState(_playerStateFactory.Idle());
             }
-
-            if (_context.IsDamaged)
-            {
-                SwitchState(_playerStateFactory.Damaged());
-            }
         }
     }
 }
