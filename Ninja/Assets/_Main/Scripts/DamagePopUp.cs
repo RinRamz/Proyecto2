@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-namespace ninja
+namespace Ninja
 {
     public class DamagePopUp : MonoBehaviour
     {
