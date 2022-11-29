@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 using System.Collections;
 
@@ -31,6 +30,8 @@ namespace Ninja
         private bool _isCrit = default;
         private float _pushForce = default;
         private bool _shouldPatrol = true;
+        private float _nextAttackTime = 0f;
+        private float _attackRate = 1f;
 
         //Getters and Setters 
         public EnemyShooterBaseState CurrentState { get { return _currentState; } set { _currentState = value; } }
@@ -47,6 +48,8 @@ namespace Ninja
         public bool IsCrit => _isCrit;
         public bool ReceivedDamage => _receivedDamage;
         public float PushForce => _pushForce;
+        public float NextAttackTime { get { return _nextAttackTime; } set { _nextAttackTime = value; } }
+        public float AttackRate { get { return _attackRate; } set { _attackRate = value; } }
         public float MoveDistance { get { return _moveDistance; } set { _moveDistance = value; } }
         public bool InRangeOfSight { get { return _inRangeofSight; } set { _inRangeofSight = value; } }
         public bool InRangeOfAttack { get { return _inRangeofAttack; } set { _inRangeofSight = value; } }
@@ -71,7 +74,6 @@ namespace Ninja
             _currentState.UpdatetState();
             _inRangeofSight = _enemyRangeOfSight.InRangeofSight;
             _inRangeofAttack = Physics2D.OverlapCircle(transform.position, _attackRange, _playerLayer);
-            _enemyActions.CheckIfDied(_hp, gameObject);
         }
 
 

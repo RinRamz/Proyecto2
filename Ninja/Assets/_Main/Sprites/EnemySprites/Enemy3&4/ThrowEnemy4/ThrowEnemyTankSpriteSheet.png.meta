@@ -1,0 +1,371 @@
+fileFormatVersion: 2
+guid: c0addf6b4eaf207469daa3ec6f1877fb
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ThrowEnemyTankSpriteSheet_13
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 50
+        width: 37
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27b4cdbbd67c21948a98f490c43009b1
+      internalID: 1615279355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThrowEnemyTankSpriteSheet_16
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 120
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e17b855aef94bc342ac0184c06cb2ff8
+      internalID: -1869073902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThrowEnemyTankSpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 852
+        y: 186
+        width: 28
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3190cb771d0662042acbb6fc5da4737b
+      internalID: 213280636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThrowEnemyTankSpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 1107
+        y: 198
+        width: 28
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3376505d12a55ed40993126d5f6ecf73
+      internalID: 1220844301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThrowEnemyTankSpriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 50
+        width: 32
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c4655732a7a0cb499815c3978da88bb
+      internalID: 521368798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThrowEnemyTankSpriteSheet_12
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 50
+        width: 32
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80aceab32a40f4442840a12fb4bb92e9
+      internalID: 1788617047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThrowEnemyTankSpriteSheet_15
+      rect:
+        serializedVersion: 2
+        x: 848
+        y: 50
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 876cd5dc2c2dbf8429462168ece3871b
+      internalID: -844691633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThrowEnemyTankSpriteSheet_19
+      rect:
+        serializedVersion: 2
+        x: 1103
+        y: 49
+        width: 36
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57edc00ad8da8614cb241225ad9737a0
+      internalID: -1260597270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThrowEnemyTankSpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 171
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 032aa3f409592134f840eeaba042c7e2
+      internalID: -2137333226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      ThrowEnemyTankSpriteSheet_1: -2137333226
+      ThrowEnemyTankSpriteSheet_28: -1099951330
+      ThrowEnemyTankSpriteSheet_22: -1732685599
+      ThrowEnemyTankSpriteSheet_23: -33941408
+      ThrowEnemyTankSpriteSheet_8: -440602471
+      ThrowEnemyTankSpriteSheet_18: -1656090083
+      ThrowEnemyTankSpriteSheet_5: -2126977798
+      ThrowEnemyTankSpriteSheet_2: 1220844301
+      ThrowEnemyTankSpriteSheet_12: 1788617047
+      ThrowEnemyTankSpriteSheet_26: -1413529952
+      ThrowEnemyTankSpriteSheet_11: -250153652
+      ThrowEnemyTankSpriteSheet_13: 1615279355
+      ThrowEnemyTankSpriteSheet_33: -460261008
+      ThrowEnemyTankSpriteSheet_15: -844691633
+      ThrowEnemyTankSpriteSheet_6: 769744196
+      ThrowEnemyTankSpriteSheet_0: 213280636
+      ThrowEnemyTankSpriteSheet_14: -419630120
+      ThrowEnemyTankSpriteSheet_16: -1869073902
+      ThrowEnemyTankSpriteSheet_30: -32500526
+      ThrowEnemyTankSpriteSheet_24: -815823783
+      ThrowEnemyTankSpriteSheet_27: 724212958
+      ThrowEnemyTankSpriteSheet_20: 1968415191
+      ThrowEnemyTankSpriteSheet_3: 1398420353
+      ThrowEnemyTankSpriteSheet_7: 2040684356
+      ThrowEnemyTankSpriteSheet_10: 521368798
+      ThrowEnemyTankSpriteSheet_25: 274653595
+      ThrowEnemyTankSpriteSheet_21: -122493362
+      ThrowEnemyTankSpriteSheet_34: -1204029536
+      ThrowEnemyTankSpriteSheet_32: 1368234177
+      ThrowEnemyTankSpriteSheet_29: 981631388
+      ThrowEnemyTankSpriteSheet_17: 1959367385
+      ThrowEnemyTankSpriteSheet_19: -1260597270
+      ThrowEnemyTankSpriteSheet_4: -989781335
+      ThrowEnemyTankSpriteSheet_9: 1891593262
+      ThrowEnemyTankSpriteSheet_31: -1203596643
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

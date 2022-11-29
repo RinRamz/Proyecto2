@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: e0883cf61c1afe74aa43ca9bc374526e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -164,3 +164,4 @@ MonoBehaviour:
     m_Bits: 256
   _bullet: {fileID: 730683619155453870, guid: 30d75f5d584ebf1438605a62bb4aff9b, type: 3}
   _player: {fileID: 8607550306105389864, guid: d0b2eb259c2104f48bbfc64f63c3385b, type: 3}
+  _critText: {fileID: 3905185739087454720, guid: ec4735500aa6e074d87e78230fc39137, type: 3}

@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Globalization;
 using TMPro;
 using UnityEngine;
 
@@ -62,16 +64,23 @@ namespace Ninja
             return hp;
         }
 
-        public void CheckIfDied(float hp, GameObject gameObject)
+        public void CheckIfDied(float hp, GameObject gameObject, Animator animator, string animName)
         {
             if (hp <= 0)
             {
-                gameObject.SetActive(false);
+                StartCoroutine(WaitForAnim(animator, animName, gameObject));
             }
             else
             {
                 return;
             }
+        }
+
+        private IEnumerator WaitForAnim(Animator animator, string animName, GameObject gameObject)
+        {
+            animator.Play(animName);
+            yield return new WaitForSeconds(0.3f);
+            gameObject.SetActive(false);
         }
     }
 }

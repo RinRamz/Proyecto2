@@ -87,6 +87,12 @@ namespace Ninja
         private void Update()
         {
             _currentState.UpdatetState();
+
+            if (_hp <= 0)
+            {
+                _animator.Play("Player_Dead");
+                StartCoroutine(Die());
+            }
         }
 
         private void FixedUpdate()
@@ -118,8 +124,9 @@ namespace Ninja
             _hp -= damage;
         }
 
-        public void Die()
+        public IEnumerator Die()
         {
+            yield return new WaitForSeconds(0.4f);
             Time.timeScale = 0f;
             _loseCanvas.SetActive(true);
             _mainCanvas.SetActive(false);

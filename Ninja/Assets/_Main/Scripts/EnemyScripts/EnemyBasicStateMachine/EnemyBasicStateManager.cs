@@ -69,7 +69,6 @@ namespace Ninja
             _currentState.UpdatetState();
             _inRangeofSight = _rangeOfSight.InRangeofSight;
             _inRangeofAttack = Physics2D.OverlapCircle(transform.position, _attackRange, _playerLayer);
-            _enemyActions.CheckIfDied(_hp, gameObject);
         }
 
         private void OnTriggerEnter2D(Collider2D collision)

@@ -1,4 +1,6 @@
 using TMPro;
+using Unity.VisualScripting.FullSerializer;
+using UnityEngine;
 
 namespace Ninja
 {
