@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 
 namespace Ninja
@@ -10,8 +9,6 @@ namespace Ninja
 
         public override void EnterState()
         {
-            _context.Animator.Play("EnemyShooter_Damaged");
-            _context.Rigidbody2D.velocity = new Vector2(_context.PushForce, 2f);
             if (_context.IsCrit)
             {
                 _context.Hp = _context.EnemyActions.GetDamaged(Mathf.RoundToInt(_context.PlayerStateManager.Damage * 1.5f), _context.Hp, _context.CritText, _context.IsCrit, _context.transform, _context.PlayerPos);
@@ -19,6 +16,17 @@ namespace Ninja
             else
             {
                 _context.Hp = _context.EnemyActions.GetDamaged(_context.PlayerStateManager.Damage, _context.Hp, _context.CritText, _context.IsCrit, _context.transform, _context.PlayerPos);
+            }
+
+            if (_context.Hp <= 0)
+            {
+                _context.EnemyActions.CheckIfDied(_context.Hp, _context.gameObject, _context.Animator, "EnemyShooter_Dead");
+                _context.enabled = false;
+            }
+            else
+            {
+                _context.Animator.Play("EnemyShooter_Damaged");
+                _context.Rigidbody2D.velocity = new Vector2(_context.PushForce, 2f);
             }
         }
 

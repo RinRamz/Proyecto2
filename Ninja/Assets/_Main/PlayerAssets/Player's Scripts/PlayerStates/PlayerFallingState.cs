@@ -15,6 +15,8 @@ namespace Ninja
         public override void UpdatetState()
         {
             CheckIfSwitchStates();
+            _context.Move();
+            _context.Flip();
         }
         
         public override void ExitState()

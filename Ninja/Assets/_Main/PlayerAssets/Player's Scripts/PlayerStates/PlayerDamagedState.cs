@@ -8,11 +8,7 @@ namespace Ninja
         public override void EnterState()
         {
             _context.Animator.Play("Player_Damaged");
-            
-            if (_context.Hp <= 0)
-            {
-                _context.Die();
-            }
+           
         }
 
         public override void UpdatetState()
