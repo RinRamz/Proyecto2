@@ -76,7 +76,6 @@ namespace Ninja
             _inRangeofAttack = Physics2D.OverlapCircle(transform.position, _attackRange, _playerLayer);
         }
 
-
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.CompareTag("Attack1Collider"))
