@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting.FullSerializer;
 
 namespace Ninja
 {
@@ -16,8 +17,10 @@ namespace Ninja
         [SerializeField] private LayerMask _playerLayer = default;
         [SerializeField] private Transform _player = default;
         [SerializeField] private GameObject _critText = default;
-
         [SerializeField] private float _hp = 120;
+        [SerializeField] private AudioClip[] _audioClips = default;
+
+        private AudioSource _audioSource = default;
         private Vector2 _initialPos;
         private Animator _animator = default;
         private Rigidbody2D _rigidBody2D = default;
@@ -33,6 +36,8 @@ namespace Ninja
 
         //Getters and Setters 
         public EnemyBasicBaseState CurrentState { get { return _currentState; } set { _currentState = value; } }
+        public AudioSource AudioSource { get { return _audioSource; } set { _audioSource = value; } }
+        public AudioClip[] AudioClips => _audioClips;
         public GameObject CritText => _critText;
         public EnemyManager EnemyActions => _enemyActions;
         public EnemyBasicStateManager StateManager => _stateManager;
@@ -55,6 +60,7 @@ namespace Ninja
         {
             _initialPos = transform.position;
             _animator = GetComponent<Animator>();
+            _audioSource = GetComponent<AudioSource>();
             _rigidBody2D = GetComponent<Rigidbody2D>();
             _enemyActions = EnemyManager.Instance;
             _playerStateManager = FindObjectOfType<PlayerStateManager>();
@@ -120,6 +126,11 @@ namespace Ninja
                 _receivedDamage = false;
                 _isCrit = false;
             }
+        }
+        public void PlayAttackSound()
+        {
+            _audioSource.clip = _audioClips[1];
+            _audioSource.Play();
         }
 
         private IEnumerator Patrol()

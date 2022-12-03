@@ -10,6 +10,8 @@ namespace Ninja
         public override void EnterState()
         {
             _context.Animator.Play("Player_Jump");
+            _context.AudioSource.clip = _context.AudioClips[6];
+            _context.AudioSource.Play();
             _context.Dust.Play();
             _context.Jump();
         }
@@ -20,6 +22,9 @@ namespace Ninja
 
             if (_context.IsJumpPressed && _context.ExtraJumps > 0 && _context.CanJumpAgain)
             {
+                _context.Animator.Play("Player_DoubleJump");
+                _context.AudioSource.clip = _context.AudioClips[6];
+                _context.AudioSource.Play();
                 _context.Jump();
             }
 

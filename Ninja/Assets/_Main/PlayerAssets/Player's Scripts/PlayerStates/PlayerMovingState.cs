@@ -8,6 +8,8 @@ namespace Ninja
         public override void EnterState()
         {
             _context.Animator.Play("Player_Run");
+            _context.AudioSource.clip = _context.AudioClips[5];
+            _context.AudioSource.Play();
             _context.Flip();
             _context.Move();
         }

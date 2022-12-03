@@ -26,6 +26,8 @@ namespace Ninja
             else
             {
                 _context.Animator.Play("Damaged_EnemyBaby");
+                _context.AudioSource.clip = _context.AudioClips[0];
+                _context.AudioSource.Play();
             }
         }
 
@@ -36,6 +38,7 @@ namespace Ninja
 
         public override void ExitState()
         {
+            _context.AudioSource.Pause();
         }
 
         public override void CheckIfSwitchStates()

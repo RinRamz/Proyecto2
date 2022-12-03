@@ -17,7 +17,9 @@ namespace Ninja
         [SerializeField] private Transform _player = default;
         [SerializeField] private Transform _groundCheck = default;
         [SerializeField] private LayerMask _groundLayer = default;
+        [SerializeField] private AudioClip[] _audioClips = default;
 
+        private AudioSource _audioSource = default;
         private Vector2 _initialPos;
         private Animator _animator = default;
         private Rigidbody2D _rigidBody2D = default;
@@ -27,6 +29,8 @@ namespace Ninja
 
         //Getters and Setters 
         public EnemyBabyBaseState CurrentState { get { return _currentState; } set { _currentState = value; } }
+        public AudioSource AudioSource { get { return _audioSource; } set { _audioSource = value; } }
+        public AudioClip[] AudioClips => _audioClips;
         public GameObject CritText => _critText;
         public Transform PlayerPos => _player;
         public Animator Animator => _animator;
@@ -44,6 +48,7 @@ namespace Ninja
         {
             _animator = GetComponent<Animator>();
             _rigidBody2D = GetComponent<Rigidbody2D>();
+            _audioSource = GetComponent<AudioSource>();
             _enemyActions = EnemyManager.Instance;
             _playerStateManager = FindObjectOfType<PlayerStateManager>();
             _initialPos = transform.position; 

@@ -181,6 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 1853395627392044985}
+  _loadingAnimator: {fileID: 702878671}
 --- !u!1 &1853395626595883316
 GameObject:
   m_ObjectHideFlags: 0
