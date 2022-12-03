@@ -10,6 +10,8 @@ namespace Ninja
         public override void EnterState()
         {
             _context.Dust.Play();
+            _context.AudioSource.clip = _context.AudioClips[1];
+            _context.AudioSource.Play();
         }
 
         public override void UpdatetState()

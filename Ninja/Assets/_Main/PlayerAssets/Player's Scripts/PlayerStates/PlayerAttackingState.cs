@@ -11,6 +11,8 @@ namespace Ninja
             _context.Animator.Play("Player_Attack");
             _context.IsAttacking = true;
             _context.IsInFirstAttack = true;
+            _context.AudioSource.clip = _context.AudioClips[3];
+            _context.AudioSource.Play();
         }
 
         public override void UpdatetState()
@@ -20,6 +22,8 @@ namespace Ninja
             {
                 _context.Animator.Play("Player_Attack2");
                 _context.IsInSecondAttack = true;
+                _context.AudioSource.clip = _context.AudioClips[4];
+                _context.AudioSource.Play();
             }
         }
 

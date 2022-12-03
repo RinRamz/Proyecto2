@@ -12,6 +12,8 @@ namespace Ninja
         public override void EnterState()
         {
             _context.Animator.Play("Attack_EnemyBaby");
+            _context.AudioSource.clip = _context.AudioClips[1];
+            _context.AudioSource.Play();
         }
 
         public override void UpdatetState()
@@ -21,6 +23,7 @@ namespace Ninja
 
         public override void ExitState()
         {
+            _context.AudioSource.Pause();
         }
 
         public override void CheckIfSwitchStates()

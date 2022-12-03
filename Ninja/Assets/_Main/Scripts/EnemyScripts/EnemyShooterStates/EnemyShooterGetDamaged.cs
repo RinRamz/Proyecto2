@@ -26,6 +26,8 @@ namespace Ninja
             else
             {
                 _context.Animator.Play("EnemyShooter_Damaged");
+                _context.AudioSource.clip = _context.AudioClips[0];
+                _context.AudioSource.Play();
                 _context.Rigidbody2D.velocity = new Vector2(_context.PushForce, 2f);
             }
         }
@@ -37,6 +39,7 @@ namespace Ninja
 
         public override void ExitState()
         {
+            _context.AudioSource.Pause();
             _context.Rigidbody2D.velocity = new Vector2(0f, 0f);
             _context.transform.position = new Vector2(_context.transform.position.x, _context.InitialPos.y);
         }

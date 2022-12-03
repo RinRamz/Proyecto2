@@ -8,13 +8,13 @@ namespace Ninja
         public override void EnterState()
         {
             _context.Animator.Play("Player_Damaged");
-           
+            _context.AudioSource.clip = _context.AudioClips[2];
+            _context.AudioSource.Play();
         }
 
         public override void UpdatetState()
         {
             CheckIfSwitchStates();
-            _context.Animator.Play("Player_Damaged");
         }
 
         public override void ExitState()

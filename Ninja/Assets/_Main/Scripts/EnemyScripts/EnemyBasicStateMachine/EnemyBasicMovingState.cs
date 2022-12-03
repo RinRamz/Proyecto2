@@ -19,6 +19,7 @@ namespace Ninja
 
         public override void ExitState()
         {
+            _context.AudioSource.Pause();
         }
 
         public override void CheckIfSwitchStates()

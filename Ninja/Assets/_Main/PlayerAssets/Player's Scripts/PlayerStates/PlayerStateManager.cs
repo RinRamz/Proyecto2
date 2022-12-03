@@ -19,6 +19,10 @@ namespace Ninja
         //HP
         [SerializeField] private float _hp = 100;
 
+        //SoundEffects
+        [SerializeField] private AudioClip[] _audioClips = default;
+        private AudioSource _audioSource = default;
+
         //Damaged variables
         private bool _isDamaged = false;
 
@@ -32,7 +36,7 @@ namespace Ninja
         private ParticleSystem _dust = default;
         private Rigidbody2D _rigidbody2D = default;
         private float _movementSpeed = 8f;
-        private float _jumpingPower = 8.7f;
+        private float _jumpingPower = 12f;
         private float _input = default;
         [SerializeField] private Transform _groundCheck = default;
         [SerializeField] private LayerMask _groundLayer = default;
@@ -51,6 +55,8 @@ namespace Ninja
 
         //Getters and Setters
         public PlayerBaseState CurrentState { get { return _currentState; } set { _currentState = value; } }
+        public AudioSource AudioSource { get { return _audioSource; } set { _audioSource = value; } }
+        public AudioClip[] AudioClips => _audioClips;
         public ParticleSystem Dust => _dust;
         public Rigidbody2D Rigidbody2D => _rigidbody2D;
         public Animator Animator => _animator;
@@ -78,6 +84,7 @@ namespace Ninja
             _dust = GetComponentInChildren<ParticleSystem>();
             _animator = GetComponent<Animator>();
             _rigidbody2D = GetComponent<Rigidbody2D>();
+            _audioSource = GetComponent<AudioSource>();
 
             _states = new PlayerStateFactory(this);
             _currentState = _states.Idle();

@@ -8,8 +8,9 @@ namespace Ninja
         public override void EnterState()
         {
             _context.Animator.Play("Player_Iddle");
+            _context.AudioSource.Pause();
         }
-        
+
         public override void UpdatetState()
         {
             CheckIfSwitchStates();
